@@ -1,11 +1,17 @@
 <template>
   <div class="index">
     <router-view></router-view>
+    <FooterBar />
   </div>
 </template>
 
 <script>
-export default {};
+import FooterBar from "../components/public/FooterBar";
+export default {
+  components: {
+    FooterBar
+  }
+};
 </script>
 
 <style>
