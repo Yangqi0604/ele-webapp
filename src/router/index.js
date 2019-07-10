@@ -22,7 +22,12 @@ const router = new Router({
           path: "/home",
           name: "home",
           component: () => import('../views/home.vue')
-        }
+        },
+        {
+          path: "/itemicon",
+          name: "itemicon",
+          component: () => import('../components/home/Itemicon.vue')
+        },
       ]
     }
   ]
