@@ -18,39 +18,38 @@
 
 <script>
 export default {
-  data(){
-    return{
-      "indexdata":[
-        {"pic1":"./logo.png","z1":"运动"},
-        {"pic1":"./logo.png","z1":"运动"},
-        {"pic1":"./logo.png","z1":"健康"} ,
-        {"pic1":"./logo.png","z1":"运动"},
-        {"pic1":"./logo.png","z1":"运动"},
-        {"pic1":"./logo.png","z1":"健康"} ,
-        {"pic1":"./logo.png","z1":"运动"},
-        {"pic1":"./logo.png","z1":"运动"},
-        {"pic1":"./logo.png","z1":"健康"} ,
-         {"pic1":"./logo.png","z1":"健康"} ,
-    ]
-    }
+  data() {
+    return {
+      indexdata: [
+        { pic1: "./logo.png", z1: "运动" },
+        { pic1: "./logo.png", z1: "运动" },
+        { pic1: "./logo.png", z1: "健康" },
+        { pic1: "./logo.png", z1: "运动" },
+        { pic1: "./logo.png", z1: "运动" },
+        { pic1: "./logo.png", z1: "健康" },
+        { pic1: "./logo.png", z1: "运动" },
+        { pic1: "./logo.png", z1: "运动" },
+        { pic1: "./logo.png", z1: "健康" },
+        { pic1: "./logo.png", z1: "健康" }
+      ]
+    };
   }
-}
+};
 </script>
 
 <style scoped>
-  /* 分类按钮 */
+/* 分类按钮 */
 .entries {
   background: pink;
   width: 100%;
-  height:12rem;
+  height: 12rem;
   text-align: center;
   display: flex;
   overflow: hidden;
-
 }
-.item-overflow{
-    width: 200%;
-    overflow-y:auto; 
+.item-overflow {
+  width: 200%;
+  overflow-y: auto;
 }
 .itemfood {
   width: 20%;
@@ -61,7 +60,7 @@ export default {
 .itemfood .img_item {
   position: relative;
   display: inline-block;
-  width:3rem;
+  width: 3rem;
   height: 3rem;
   border-radius: 50%;
   background-color: lightgreen;
@@ -69,7 +68,6 @@ export default {
 .img_item img {
   width: 100%;
   height: 100%;
-  
 }
 .itemfood span {
   display: block;

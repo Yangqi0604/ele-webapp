@@ -1,181 +1,255 @@
 <template>
   <div>
-  <section class="index-container">
-    <div class="index-shopInfo">
-      <!-- 左侧图片 -->
-      <div class="logo_container">
-        <img src="https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/" alt>
-      </div>
-      <!-- 右侧内容 -->
-      <!-- 第一行，品牌 -->
-      <div class="index_main">
-        <div class="index_shopname">
-          <i>品牌</i>
-          <span>顶顶香</span>
-        </div>
-        <!-- 第二行，星级 -->
-        <div class="index-rateWrap">
-          <div>
-            <!-- <starLevel :rating="restaurant.rating"/> -->
-            <!-- <span class="rate">{{restaurant.rating}}</span> -->
-            <span>月售1168单</span>
-          </div>
-          <div class="delivery" >
-            <span class="icon-hollow"></span>
-          </div>
-        </div>
-        <!-- 第三行，配送 -->
-        <div class="index-moneylimit">
-          <div>
-            <span>￥20起送</span>
-            |
-            <span>配送费￥1.1</span>
-          </div>
-          <div class="index-distanceWrap">
-            <span>2.73km</span>
-            |
-            <span>43分钟</span>
-          </div>
-        </div>
-        <!-- 第四行，口碑 -->
-        <div class="index-status">
-          <div>
-            <span>川湘菜</span>
-          </div>
-          <div>
-            <span>品质联盟</span>
-            <span>
-              <img src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png?imageMogr/format/webp/thumbnail/!20x20r/gravity/Center/crop/20x20/" alt="">
-              <span>口碑人气好店</span>
-            </span>
-          </div>
-        </div>        
-      </div>
-    </div>
-  </section>
-  <section class="index-container">
-    <div class="index-shopInfo">
-      <!-- 左侧图片 -->
-      <div class="logo_container">
-        <img src="https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/" alt>
-      </div>
-      <!-- 右侧内容 -->
-      <!-- 第一行，品牌 -->
-      <div class="index_main">
-        <div class="index_shopname">
-          <i>品牌</i>
-          <span>顶顶香</span>
-        </div>
-        <!-- 第二行，星级 -->
-        <div class="index-rateWrap">
-          <div>
-            <!-- <starLevel :rating="restaurant.rating"/> -->
-            <!-- <span class="rate">{{restaurant.rating}}</span> -->
-            <span>月售1168单</span>
-          </div>
-          <div class="delivery" >
-            <span class="icon-hollow"></span>
-          </div>
-        </div>
-        <!-- 第三行，配送 -->
-        <div class="index-moneylimit">
-          <div>
-            <span>￥20起送</span>
-            |
-            <span>配送费￥1.1</span>
-          </div>
-          <div class="index-distanceWrap">
-            <span>2.73km</span>
-            |
-            <span>43分钟</span>
-          </div>
-        </div>
-        <!-- 第四行，口碑 -->
-        <div class="index-status">
-          <div>
-            <span>川湘菜</span>
-          </div>
-          <div>
-            <span>品质联盟</span>
-            <span>
-              <img src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png?imageMogr/format/webp/thumbnail/!20x20r/gravity/Center/crop/20x20/" alt="">
-              <span>口碑人气好店</span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>  
     <section class="index-container">
-    <div class="index-shopInfo">
-      <!-- 左侧图片 -->
-      <div class="logo_container">
-        <img src="https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/" alt>
+      <div class="index-shopInfo">
+        <!-- 左侧图片 -->
+        <div class="logo_container">
+          <img
+            src="https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/"
+            alt
+          />
+        </div>
+        <!-- 右侧内容 -->
+        <!-- 第一行，品牌 -->
+        <div class="index_main">
+          <div class="index_shopname">
+            <i>品牌</i>
+            <span>顶顶香</span>
+          </div>
+          <!-- 第二行，星级 -->
+          <div class="index-rateWrap">
+            <div>
+              <!-- <starLevel :rating="restaurant.rating"/> -->
+              <!-- <span class="rate">{{restaurant.rating}}</span> -->
+              <span>月售1168单</span>
+            </div>
+            <div class="delivery">
+              <span class="icon-hollow"></span>
+            </div>
+          </div>
+          <!-- 第三行，配送 -->
+          <div class="index-moneylimit">
+            <div>
+              <span>￥20起送</span>
+              |
+              <span>配送费￥1.1</span>
+            </div>
+            <div class="index-distanceWrap">
+              <span>2.73km</span>
+              |
+              <span>43分钟</span>
+            </div>
+          </div>
+          <!-- 第四行，口碑 -->
+          <div class="index-status">
+            <div>
+              <span>川湘菜</span>
+            </div>
+            <div>
+              <span>品质联盟</span>
+              <span>
+                <img
+                  src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png?imageMogr/format/webp/thumbnail/!20x20r/gravity/Center/crop/20x20/"
+                  alt
+                />
+                <span>口碑人气好店</span>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- 右侧内容 -->
-      <!-- 第一行，品牌 -->
-      <div class="index_main">
-        <div class="index_shopname">
-          <i>品牌</i>
-          <span>顶顶香</span>
+    </section>
+    <section class="index-container">
+      <div class="index-shopInfo">
+        <!-- 左侧图片 -->
+        <div class="logo_container">
+          <img
+            src="https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/"
+            alt
+          />
         </div>
-        <!-- 第二行，星级 -->
-        <div class="index-rateWrap">
-          <div>
-            <!-- <starLevel :rating="restaurant.rating"/> -->
-            <!-- <span class="rate">{{restaurant.rating}}</span> -->
-            <span>月售1168单</span>
+        <!-- 右侧内容 -->
+        <!-- 第一行，品牌 -->
+        <div class="index_main">
+          <div class="index_shopname">
+            <i>品牌</i>
+            <span>顶顶香</span>
           </div>
-          <div class="delivery" >
-            <span class="icon-hollow"></span>
+          <!-- 第二行，星级 -->
+          <div class="index-rateWrap">
+            <div>
+              <!-- <starLevel :rating="restaurant.rating"/> -->
+              <!-- <span class="rate">{{restaurant.rating}}</span> -->
+              <span>月售1168单</span>
+            </div>
+            <div class="delivery">
+              <span class="icon-hollow"></span>
+            </div>
           </div>
-        </div>
-        <!-- 第三行，配送 -->
-        <div class="index-moneylimit">
-          <div>
-            <span>￥20起送</span>
-            |
-            <span>配送费￥1.1</span>
+          <!-- 第三行，配送 -->
+          <div class="index-moneylimit">
+            <div>
+              <span>￥20起送</span>
+              |
+              <span>配送费￥1.1</span>
+            </div>
+            <div class="index-distanceWrap">
+              <span>2.73km</span>
+              |
+              <span>43分钟</span>
+            </div>
           </div>
-          <div class="index-distanceWrap">
-            <span>2.73km</span>
-            |
-            <span>43分钟</span>
-          </div>
-        </div>
-        <!-- 第四行，口碑 -->
-        <div class="index-status">
-          <div>
-            <span>川湘菜</span>
-          </div>
-          <div>
-            <span>品质联盟</span>
-            <span>
-              <img src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png?imageMogr/format/webp/thumbnail/!20x20r/gravity/Center/crop/20x20/" alt="">
-              <span>口碑人气好店</span>
-            </span>
+          <!-- 第四行，口碑 -->
+          <div class="index-status">
+            <div>
+              <span>川湘菜</span>
+            </div>
+            <div>
+              <span>品质联盟</span>
+              <span>
+                <img
+                  src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png?imageMogr/format/webp/thumbnail/!20x20r/gravity/Center/crop/20x20/"
+                  alt
+                />
+                <span>口碑人气好店</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>  
-  
+    </section>
+    <section class="index-container">
+      <div class="index-shopInfo">
+        <!-- 左侧图片 -->
+        <div class="logo_container">
+          <img
+            src="https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/"
+            alt
+          />
+        </div>
+        <!-- 右侧内容 -->
+        <!-- 第一行，品牌 -->
+        <div class="index_main">
+          <div class="index_shopname">
+            <i>品牌</i>
+            <span>顶顶香</span>
+          </div>
+          <!-- 第二行，星级 -->
+          <div class="index-rateWrap">
+            <div>
+              <!-- <starLevel :rating="restaurant.rating"/> -->
+              <!-- <span class="rate">{{restaurant.rating}}</span> -->
+              <span>月售1168单</span>
+            </div>
+            <div class="delivery">
+              <span class="icon-hollow"></span>
+            </div>
+          </div>
+          <!-- 第三行，配送 -->
+          <div class="index-moneylimit">
+            <div>
+              <span>￥20起送</span>
+              |
+              <span>配送费￥1.1</span>
+            </div>
+            <div class="index-distanceWrap">
+              <span>2.73km</span>
+              |
+              <span>43分钟</span>
+            </div>
+          </div>
+          <!-- 第四行，口碑 -->
+          <div class="index-status">
+            <div>
+              <span>川湘菜</span>
+            </div>
+            <div>
+              <span>品质联盟</span>
+              <span>
+                <img
+                  src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png?imageMogr/format/webp/thumbnail/!20x20r/gravity/Center/crop/20x20/"
+                  alt
+                />
+                <span>口碑人气好店</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="index-container">
+      <div class="index-shopInfo">
+        <!-- 左侧图片 -->
+        <div class="logo_container">
+          <img
+            src="https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/"
+            alt
+          />
+        </div>
+        <!-- 右侧内容 -->
+        <!-- 第一行，品牌 -->
+        <div class="index_main">
+          <div class="index_shopname">
+            <i>品牌</i>
+            <span>顶顶香</span>
+          </div>
+          <!-- 第二行，星级 -->
+          <div class="index-rateWrap">
+            <div>
+              <!-- <starLevel :rating="restaurant.rating"/> -->
+              <!-- <span class="rate">{{restaurant.rating}}</span> -->
+              <span>月售1168单</span>
+            </div>
+            <div class="delivery">
+              <span class="icon-hollow"></span>
+            </div>
+          </div>
+          <!-- 第三行，配送 -->
+          <div class="index-moneylimit">
+            <div>
+              <span>￥20起送</span>
+              |
+              <span>配送费￥1.1</span>
+            </div>
+            <div class="index-distanceWrap">
+              <span>2.73km</span>
+              |
+              <span>43分钟</span>
+            </div>
+          </div>
+          <!-- 第四行，口碑 -->
+          <div class="index-status">
+            <div>
+              <span>川湘菜</span>
+            </div>
+            <div>
+              <span>品质联盟</span>
+              <span>
+                <img
+                  src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png?imageMogr/format/webp/thumbnail/!20x20r/gravity/Center/crop/20x20/"
+                  alt
+                />
+                <span>口碑人气好店</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 export default {
-  name:"Homeshoplist",
-  data(){
-    return{
-      
-    }
+  name: "Homeshoplist",
+  data() {
+    return {};
   },
   created() {
-    this.getData
+    this.getData;
   },
-  methods:{
-    getData(){
+  methods: {
+    getData() {
       this.$axios("/api/profile/shopping").then(res => {
         // console.log(res.data);
         this.swipeImgs = res.data.swipeImgs;
@@ -245,11 +319,11 @@ export default {
   overflow: hidden;
   justify-content: space-between;
 }
-.index-rateWrap>div:nth-of-type(1)>span:nth-of-type(1){
-    color: #666;
-    padding: .4rem 0;
-    list-style: none;
-    font-size: .793333rem;
+.index-rateWrap > div:nth-of-type(1) > span:nth-of-type(1) {
+  color: #666;
+  padding: 0.4rem 0;
+  list-style: none;
+  font-size: 0.793333rem;
 }
 .index-rateWrap .rate {
   margin-right: 1.066667vw;
@@ -274,14 +348,14 @@ export default {
   padding: 2px;
   box-sizing: border-box;
 }
-.index-status{
-  display:flex;
+.index-status {
+  display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
 }
-.index-status img{
-    width: .666667rem;
-    height: .66667rem;
-    color: #e8470b;
+.index-status img {
+  width: 0.666667rem;
+  height: 0.66667rem;
+  color: #e8470b;
 }
 </style>
