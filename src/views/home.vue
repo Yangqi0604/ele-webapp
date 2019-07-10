@@ -1,10 +1,16 @@
 <template>
-  <div>home</div>
+  <add-search></add-search>
 </template>
 
 <script>
-export default {};
+  import AddSearch from '../components/home/AddSearch'
+export default {
+    components:{
+      AddSearch
+    }
+};
 </script>
 
-<style>
+<style scoped>
+
 </style>
