@@ -1,38 +1,23 @@
 <template>
-  <div>
-    <!-- 分类按钮 -->
-    <div class="entries">
-      <ele-swipe>
-        <ele-swipe-item class="item-overflow">
-          <div class="itemfood" v-for="(item,index) in indexdata" :key="index">
-            <div class="img_item">
-              <img :src="item.pic1" alt />
-            </div>
-            <span>{{item.z1}}</span>
+  <!-- 分类按钮 -->
+  <div class="entries">
+    <mt-swipe :auto="0" class="entries">
+      <mt-swipe-item v-for="(entry,index) in entries" :key="index" class="item-overflow">
+        <div class="itemfood" v-for="(item,i) in entry" :key="i">
+          <div class="img_item">
+            <img :src="item.image" alt />
           </div>
-        </ele-swipe-item>
-      </ele-swipe>
-    </div>
+          <span>{{item.name}}</span>
+        </div>
+      </mt-swipe-item>
+    </mt-swipe>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      indexdata: [
-        { pic1: "./logo.png", z1: "运动" },
-        { pic1: "./logo.png", z1: "运动" },
-        { pic1: "./logo.png", z1: "健康" },
-        { pic1: "./logo.png", z1: "运动" },
-        { pic1: "./logo.png", z1: "运动" },
-        { pic1: "./logo.png", z1: "健康" },
-        { pic1: "./logo.png", z1: "运动" },
-        { pic1: "./logo.png", z1: "运动" },
-        { pic1: "./logo.png", z1: "健康" },
-        { pic1: "./logo.png", z1: "健康" }
-      ]
-    };
+  props: {
+    entries: Array
   }
 };
 </script>
@@ -40,16 +25,13 @@ export default {
 <style scoped>
 /* 分类按钮 */
 .entries {
-  background: pink;
+  background: #ffffff;
   width: 100%;
   height: 12rem;
   text-align: center;
-  display: flex;
+  /* display: flex; */
   overflow: hidden;
-}
-.item-overflow {
-  width: 200%;
-  overflow-y: auto;
+  text-align: center;
 }
 .itemfood {
   width: 20%;
@@ -62,8 +44,8 @@ export default {
   display: inline-block;
   width: 3rem;
   height: 3rem;
-  border-radius: 50%;
-  background-color: lightgreen;
+  /* border-radius: 50%; */
+  /* background-color: lightgreen; */
 }
 .img_item img {
   width: 100%;

@@ -1,7 +1,8 @@
 <template>
   <div>
     <add-search />
-    <item-icon />
+    <item-icon :entries="entries" />
+    <swiper-content :swipeImgs="swipeImgs" />
     <nav-bar />
     <homeShop-list />
   </div>
@@ -13,12 +14,34 @@ import AddSearch from "../components/home/AddSearch";
 import ItemIcon from "../components/home/Itemicon";
 import Navbar from "../components/home/Navbar";
 import HomeShopList from "../components/home//Homeshoplist";
+import SwiperContent from "../components/public/Swiper";
 export default {
+  data() {
+    return {
+      swipeImgs: [],
+      entries: []
+    };
+  },
+  created() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      this.$axios("/profile/shopping").then(res => {
+        // console.log(res.data);
+        this.entries = res.data.entries;
+        this.swipeImgs = res.data.swipeImgs;
+        console.log(this.entries);
+        // this.homeInfo = res.data;
+      });
+    }
+  },
   components: {
     "add-search": AddSearch,
     "item-icon": ItemIcon,
     "nav-bar": Navbar,
-    "homeShop-list": HomeShopList
+    "homeShop-list": HomeShopList,
+    "swiper-content": SwiperContent
   }
 };
 </script>
