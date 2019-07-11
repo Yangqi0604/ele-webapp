@@ -24,16 +24,44 @@ const router = new Router({
           component: () => import('../views/home.vue')
         },
         {
-          path: "/itemicon",
-          name: "itemicon",
-          component: () => import('../components/home/Itemicon.vue')
+          path: "/mine",
+          name: "mine",
+          component: () => import('../views/mine.vue')
         },
+        {
+          path: "/test",
+          name: "test",
+          component: () => import('../views/test.vue')
+        },
+        {
+          path: "/order",
+          name: "order",
+          component: () => import('../views/order.vue')
+        }
       ]
     },
     {
-      path: "/test",
-      name: "test",
-      component: () => import('../views/test.vue')
+      path: "/shop",
+      name: "shop",
+      component: () => import('../views/shop/ele-store.vue'),
+      redirect: "/eleStore-diancan",
+      children: [
+        {
+          path: "/eleStore-diancan",
+          name: "eleStore-diancan",
+          component: () => import('../views/shop/eleStore-diancan.vue')
+        },
+        {
+          path: "/eleStore-coment",
+          name: "eleStore-coment",
+          component: () => import('../views/shop/eleStore-coment.vue')
+        },
+        {
+          path: "/eleStore-seller",
+          name: "eleStore-seller",
+          component: () => import('../views/shop/eleStore-seller.vue')
+        }
+      ]
     }
   ]
 })
