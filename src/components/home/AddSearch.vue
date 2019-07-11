@@ -1,15 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div class="bigSearch">
-    <div :class="[flag ?'topSearch':'meituan']">
-      <span class="fa fa-map-marker" aria-hidden="true"></span>
-      <h1>西安市人民政府</h1>
-      <i class="fa fa-sort-desc"></i>
-    </div>
-    <div class="bottomSearch">
-      <span class="fa fa-search" aria-hidden="true" @click="qiehuan"></span>
-      <input type="text" placeholder="搜索饿了么商家，商品名称" />
-=======
   <div>
     <!-- 饿了么 -->
     <div class="bigSearch">
@@ -22,9 +11,8 @@
         <span :class="[change?'fa fa-search':'fa fa-search']"></span>
         <input type="text" placeholder="搜索饿了么商家，商品名称" />
       </div>
->>>>>>> yangqi
     </div>
-    <!-- <button @click="changeclick">改变</button> -->
+    <button @click="changeclick">改变</button>
   </div>
 </template>
 
@@ -36,12 +24,6 @@ export default {
       title: ""
     };
   },
-<<<<<<< HEAD
-  methods:{
-    qiehuan(){
-      this.flag = !this.flag
-    }
-=======
   computed: {
     change() {
       return this.$store.state.flag;
@@ -53,7 +35,6 @@ export default {
     //   this.$store.commit("changeclick");
     // }
     ...mapMutations(["changeclick"])
->>>>>>> yangqi
   }
 };
 </script>
@@ -66,12 +47,6 @@ export default {
   align-items: center;
   background: #0085ff;
 }
-<<<<<<< HEAD
-.meituan{
-  display: none;
-}
-=======
-
 .tp {
   width: 100%;
   height: 3rem;
@@ -80,8 +55,7 @@ export default {
   background: red;
 }
 
->>>>>>> yangqi
-.topSearch > i {
+.topSearch i {
   margin: 0px 5px;
   font-size: 19px;
   margin-top: -8px;
