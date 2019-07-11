@@ -8,6 +8,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=bc864b86c21fad61e3129108755b40d2">
   </script>
+  <!-- <link rel="stylesheet" href="./static/css/style1.css" id="change"> -->
   <title>ele-webapp</title>
 
 </head>
@@ -18,3 +19,17 @@
 </body>
 
 </html>
+<script>
+  (function () {
+    fetch('http://localhost:3000/cart/api3/cartA').then(response => response.json()) //解析为可读数据
+      .then(data => {
+        console.log(data);
+        document.getElementById("change").href = data.style[0].style
+      }) //执行结果是 resolve就调用then方法
+      .catch(err => console.log("Oh, error", err)) //执行结果是 reject就调用catch方法
+    // this.axios.get('http://localhost:3000/cart/api1/cartA').then(({data})=>{
+    //   console.log(data);
+    // })
+  })();
+
+</script>

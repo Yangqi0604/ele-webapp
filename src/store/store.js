@@ -6,19 +6,22 @@ Vue.use(Vuex)
 //types  //显示类型
 const types = {
   SET_LOCATION: "SET_LOCATION",
-  SET_ADDRESS: "SET_ADDRESS"
+  SET_ADDRESS: "SET_ADDRESS",
+  SET_CHANGE: "SET_CHANGE"
 }
 
 //state 状态
 const state = {
   location: {},
-  address: ""
+  address: "",
+  flag: true
 }
 
 //getters
 const getters = {
   location: state => state.location,
   address: state => state.address,
+  // change: state => state.change
 }
 
 //mutations
@@ -36,6 +39,9 @@ const mutations = {
     } else {
       state.address = "";
     }
+  },
+  changeclick: state => {
+    state.flag = !state.flag;
   }
 }
 
@@ -52,6 +58,11 @@ const actions = {
   }, address) => {
     commit(types.SET_ADDRESS, address);
   },
+  setchange: ({
+    commit
+  }, flag) => {
+    commit(types.SET_CHANGE, flag);
+  }
 }
 
 export default new Vuex.Store({
