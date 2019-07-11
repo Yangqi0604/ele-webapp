@@ -27,7 +27,7 @@ const router = new Router({
           path: "/itemicon",
           name: "itemicon",
           component: () => import('../components/home/Itemicon.vue')
-        },
+        }
       ]
     },
     {

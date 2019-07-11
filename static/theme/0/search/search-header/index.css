@@ -1,0 +1,58 @@
+/*左箭头*/
+.navbar {
+    height: 3.03rem;
+    color: #fff;
+    background: #06c1ae;
+    border-bottom: 1px solid #21897d;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    position: relative;
+}
+.navbar .nav-wrap-left {
+    height: 3.03rem;
+    line-height: 3.03rem;
+}
+.nav-wrap-left a{
+    display: block;
+    height: 3rem;
+    width: 1.35rem;
+    line-height: 3rem;
+    padding: 0 .9rem;
+    font-size:2.7rem
+}
+.nav-wrap-left>a>i{
+    color: #fff;
+}
+/*中间文字*/
+.h1.nav-header {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    font-size: 1.08rem;
+    font-weight: 400;
+    text-align: center;
+    line-height: 3rem;
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+/*右边图标*/
+.nav-wrap-right a {
+    display: inline-block;
+    height: 100%;
+    line-height: 3rem;
+    text-align: center;
+    width: 2.82rem;
+}
+.nav-btn {
+    display: inline-block;
+    font-size: .6rem;
+    line-height: 3rem;
+    vertical-align: middle;
+    color: #fff;
+}
+.nav-btn>i{
+    display: block;
+    margin-bottom: .36rem;
+    font-size: 1.2rem;
+}

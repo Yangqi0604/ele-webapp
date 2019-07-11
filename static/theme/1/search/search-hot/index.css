@@ -1,0 +1,27 @@
+.search-hot {
+    background-color: #fff;
+    padding: 0.9rem 0.6rem;
+}
+/*标题*/
+.hot-title{
+    color: #666;
+    font-size: .96rem;
+    font-weight: 700;
+}
+/* 搜索list*/
+.hot-list{
+
+}
+/*热搜推荐项目*/
+.hot-list-item {
+    display: inline-block;
+    text-align: center;
+    font-size: .84rem;
+    margin-right: .78rem;
+    border-radius: .666667vw;
+    padding: .6rem .6rem;
+    margin-top: .9rem;
+    color: #666;
+    background-color: #f7f7f7;
+
+}
