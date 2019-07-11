@@ -1,23 +1,27 @@
 <template>
   <div class="bigSearch">
-    <div v-if="flag" :class="flag ?'topSearch':''">
+    <div :class="[flag?'topSearch':'tp']">
       <span class="fa fa-map-marker" aria-hidden="true"></span>
       <h1>西安市人民政府</h1>
       <i class="fa fa-sort-desc"></i>
     </div>
     <div class="bottomSearch">
-      <span class="fa fa-search" aria-hidden="true"></span>
+      <span class="fa fa-search" aria-hidden="true" @click="huan"></span>
       <input type="text" placeholder="搜索饿了么商家，商品名称" />
     </div>
   </div>
 </template>
-
 <script>
 export default {
   data() {
     return {
       flag: true
     };
+  },
+  methods:{
+    huan(){
+      this.flag = !this.flag
+    }
   }
 };
 </script>
@@ -29,6 +33,14 @@ export default {
   display: flex;
   align-items: center;
   background: #0085ff;
+}
+.tp {
+  display: none;
+  /*width: 100%;*/
+  /*height: 3rem;*/
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*background: orange;*/
 }
 .topSearch > i {
   margin: 0px 5px;
