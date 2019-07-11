@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button id="s1" @click="change">教育电商styleA</button>
-    <button id="s2" @click="change1">教育电商styleB</button>
+    <button id="s1" @click="change">饿了么</button>
+    <button id="s2" @click="change1">美团</button>
   </div>
 </template>
 
