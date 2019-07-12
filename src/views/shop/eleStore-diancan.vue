@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ele-store-diancan-top></ele-store-diancan-top>
-    <ele-store-diancan-bottom></ele-store-diancan-bottom>
+    <ele-store-diancan-top :data="recommend"></ele-store-diancan-top>
+    <ele-store-diancan-bottom :data="menu"></ele-store-diancan-bottom>
   </div>
 </template>
 
@@ -16,10 +16,18 @@ export default {
   created() {
     this.getData();
   },
+  data(){
+    return{
+      recommend:{},
+      menu:{}
+    }
+  },
   methods: {
     getData() {
       this.$axios("/profile/batch_shop").then(res => {
-        console.log(res.data);
+        console.log(res.data.menu);
+        this.recommend = res.data.recommend[0].items
+        this.menu = res.data.menu
       });
     }
   }
