@@ -1,115 +1,45 @@
 <template>
-    <div class="classify">
-        <ul class="classifyLeft">
-          <li><i class="fa fa-free-code-camp" aria-hidden="true" style="color:red"></i>热销</li>
-          <li><i class="fa fa-free-code-camp" aria-hidden="true" style="color:red"></i>热销</li>
-          <li><i class="fa fa-free-code-camp" aria-hidden="true" style="color:red"></i>热销</li>
-          <li><i class="fa fa-free-code-camp" aria-hidden="true" style="color:red"></i>热销</li>
-          <li><i class="fa fa-free-code-camp" aria-hidden="true" style="color:red"></i>热销</li>
-          <li><i class="fa fa-free-code-camp" aria-hidden="true" style="color:red"></i>热销</li>
-          <li><i class="fa fa-free-code-camp" aria-hidden="true" style="color:red"></i>热销</li>
-          <li><i class="fa fa-free-code-camp" aria-hidden="true" style="color:red"></i>热销</li>
-          <li><i class="fa fa-free-code-camp" aria-hidden="true" style="color:red"></i>热销</li>
-          <li><i class="fa fa-free-code-camp" aria-hidden="true" style="color:red"></i>热销</li>
-        </ul>
-        <div class="classifyRight">
-         <h1 style="font-weight: bold;font-size: .6rem;margin-top: .2rem">热销<i style="color: grey;font-size: 12px">大家都喜欢才叫真好吃</i></h1>
-          <div class="classifyRightSon">
-            <img src="../../assets/logo.png" alt="">
-            <div>
-              <h1 style="font-weight: bold;font-size: 1rem">源汤牛肉粉丝</h1>
-              <p>正经牛肉,正经骨汤...</p>
-              <p>月销量68好评率88%</p>
-              <h2>￥22<button>+</button></h2>
-            </div>
-          </div>
-          <div class="classifyRightSon">
-            <img src="../../assets/logo.png" alt="">
-            <div>
-              <h1 style="font-weight: bold;font-size: 1rem">源汤牛肉粉丝</h1>
-              <p>正经牛肉,正经骨汤...</p>
-              <p>月销量68好评率88%</p>
-              <h2>￥22<button>+</button></h2>
-            </div>
-          </div>
-          <div class="classifyRightSon">
-            <img src="../../assets/logo.png" alt="">
-            <div>
-              <h1 style="font-weight: bold;font-size: 1rem">源汤牛肉粉丝</h1>
-              <p>正经牛肉,正经骨汤...</p>
-              <p>月销量68好评率88%</p>
-              <h2>￥22<button>+</button></h2>
-            </div>
-          </div>
-          <div class="classifyRightSon">
-            <img src="../../assets/logo.png" alt="">
-            <div>
-              <h1 style="font-weight: bold;font-size: 1rem">源汤牛肉粉丝</h1>
-              <p>正经牛肉,正经骨汤...</p>
-              <p>月销量68好评率88%</p>
-              <h2>￥22<button>+</button></h2>
-            </div>
-          </div>
-          <div class="classifyRightSon">
-            <img src="../../assets/logo.png" alt="">
-            <div>
-              <h1 style="font-weight: bold;font-size: 1rem">源汤牛肉粉丝</h1>
-              <p>正经牛肉,正经骨汤...</p>
-              <p>月销量68好评率88%</p>
-              <h2>￥22<button>+</button></h2>
-            </div>
-          </div>
-          <div class="classifyRightSon">
-            <img src="../../assets/logo.png" alt="">
-            <div>
-              <h1 style="font-weight: bold;font-size: 1rem">源汤牛肉粉丝</h1>
-              <p>正经牛肉,正经骨汤...</p>
-              <p>月销量68好评率88%</p>
-              <h2>￥22<button>+</button></h2>
-            </div>
-          </div>
-          <div class="classifyRightSon">
-            <img src="../../assets/logo.png" alt="">
-            <div>
-              <h1 style="font-weight: bold;font-size: 1rem">源汤牛肉粉丝</h1>
-              <p>正经牛肉,正经骨汤...</p>
-              <p>月销量68好评率88%</p>
-              <h2>￥22<button>+</button></h2>
-            </div>
-          </div>
-          <div class="classifyRightSon">
-            <img src="../../assets/logo.png" alt="">
-            <div>
-              <h1 style="font-weight: bold;font-size: 1rem">源汤牛肉粉丝</h1>
-              <p>正经牛肉,正经骨汤...</p>
-              <p>月销量68好评率88%</p>
-              <h2>￥22<button>+</button></h2>
-            </div>
-          </div>
-          <div class="classifyRightSon">
-            <img src="../../assets/logo.png" alt="">
-            <div>
-              <h1 style="font-weight: bold;font-size: 1rem">源汤牛肉粉丝</h1>
-              <p>正经牛肉,正经骨汤...</p>
-              <p>月销量68好评率88%</p>
-              <h2>￥22<button>+</button></h2>
-            </div>
-          </div>
-          <div class="classifyRightSon">
-            <img src="../../assets/logo.png" alt="">
-            <div>
-              <h1 style="font-weight: bold;font-size: 1rem">源汤牛肉粉丝</h1>
-              <p>正经牛肉,正经骨汤...</p>
-              <p>月销量68好评率88%</p>
-              <h2>￥22<button>+</button></h2>
-            </div>
-          </div>
-        </div>
-    </div>
+   <div>
+     <div class="classify">
+       <ul class="classifyLeft">
+         <li v-for="(i,index) in data" :key="index">
+           <div>
+             <img :src="i.icon_url" alt="">
+             {{i.name}}
+           </div>
+         </li>
+       </ul>
+       <div class="classifyRight">
+         <div class="bigSon" v-for="(j,ind) in data" :key="ind">
+           <h1 style="color:#666;font-weight: bold;font-size: 1.2rem;margin-bottom:1rem;margin-top: 1rem">{{j.name}}</h1>
+           <div class="classifyRightSon" v-for="(s,idx) in j.foods" :key="idx">
+             <img :src="s.image_path" alt="">
+             <div>
+               <h1 style="font-weight: bold;font-size: 1rem">{{s.name}}</h1>
+               <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis; width: 10rem">{{s.description}}</p>
+
+               <p>{{s.tips}}</p>
+               <h2>￥{{s.activity.fixed_price}}<button @click="cartAdd">+</button></h2>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+    <footer class="cartFoot">
+        <div class="fa fa-cart-plus cartIcon" aria-hidden="true" ref="dd"></div>
+    </footer>
+   </div>
 </template>
 
 <script>
     export default {
+        props:['data'],
+        methods:{
+          cartAdd(){
+            this.$refs.dd.style.backgroundColor = '#2396ff'
+            this.$refs.dd.style.color = 'white'
+          }
+        },
         name: "eleStore-diancan-Bottom"
     }
 </script>
@@ -117,30 +47,49 @@
 <style scoped>
   .classify{
     width: 100%;
-    height: 40rem;
-    margin-top: 1rem;
+    height: 45rem;
+    margin-top: .5rem;
     display: flex;
+    margin-bottom: 3rem;
   }
   .classifyLeft{
     width: 22%;
-    height: 40rem;
-    background:lightgrey;
+    height: 45rem;
+    background:#f8f8f8;;
   }
   .classifyLeft>li{
     width: 100%;
-    height: 4rem;
-    line-height: 4rem;
-    text-align: center;
-    font-size: .5rem;
+    height: 3.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .classifyLeft>li>div{
+    width: 80%;
+    height: 3.6rem;
+    font-size: .7rem;
+    color: #666;
+    line-height: 1rem;
+    margin-top: 2rem;
+  }
+  .classifyLeft>li>div>img{
+    width: 1rem;
+    height: 1rem;
   }
   .classifyLeft>li:hover{
     background:white;
   }
   .classifyRight{
     width: 78%;
-    height: 40rem;
     flex: 1;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .bigSon{
+    width: 100%;
+    /*min-height:45rem;*/
+    /*overflow: auto;*/
   }
   .classifyRightSon{
     width: 100%;
@@ -184,4 +133,25 @@
     background:#0085ff;
     margin-right: 1rem;
   }
+  .cartFoot{
+    width: 100%;
+    height: 3.5rem;
+    position: fixed;
+    bottom: 0;
+    background:rgba(0,0,0,0.7);
+  }
+.cartFoot>.cartIcon{
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: #666;
+  background:rgba(0,0,0,0.7);
+  border-radius: 50%;
+  font-size: 2rem ;
+  text-align: center;
+  line-height: 3.5rem;
+  position: absolute;
+  left: 1.4rem;
+  top: -.8rem;
+}
 </style>
