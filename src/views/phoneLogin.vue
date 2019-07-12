@@ -6,16 +6,11 @@
     <div class="login">
       <!-- <form class="loginform"> -->
       <section class="phonesec">
-        <input type="tel" maxlength="11" placeholder="手机号" v-model="phonenum" @input="change"/>
-        <button
-          class="phoneloginbtn"
-          
-          :style="color"
-          @click="authCode"
-        >{{changecode}}</button>
+        <input type="tel" maxlength="11" placeholder="手机号" v-model="phonenum" @input="change" />
+        <button class="phoneloginbtn" :style="color" @click="authCode">{{changecode}}</button>
       </section>
       <section class="phonesec">
-        <input type="tel" maxlength="8" placeholder="验证码" v-model="authcode"/>
+        <input type="tel" maxlength="8" placeholder="验证码" v-model="authcode" />
       </section>
       <section class="useragree">
         新用户登录即自动注册，并表示已同意
@@ -40,7 +35,7 @@ export default {
       disabled: true,
       color: "color:#ddd",
       changecode: "获取验证码",
-      authcode:""
+      authcode: ""
     };
   },
   methods: {
@@ -53,7 +48,6 @@ export default {
         this.disabled = true;
         this.color = "color:#ddd";
       }
-       
     },
     // 获取验证码
     authCode() {
@@ -69,31 +63,31 @@ export default {
           .then(res => {
             console.log(res);
           });
-          
       }
     },
-    phoneLogin(){
-        this.$axios
-          .post("/posts/sms_back", {
-            phone: this.phonenum,
-            code: this.authcode
-          })
-          .then(res => {
-            console.log(res);
-            //检验成功  设置登录状态并跳转
-            localStorage.setItem("ele_login", true);
-            this.$router.push("/");
-          })
-      // 失败的话
-      .catch(err => {
-        this.errors = {
-          code: err.response.data.msg
-        };
-      });
+    phoneLogin() {
+      this.$axios
+        .post("/posts/sms_back", {
+          phone: this.phonenum,
+          code: this.authcode
+        })
+        .then(res => {
+          console.log(res);
+          //检验成功  设置登录状态并跳转
+          console.log(res.data);
+          localStorage.setItem("ele_login", res.data.user._id);
+          this.$router.push("/");
+        })
+        // 失败的话
+        .catch(err => {
+          this.errors = {
+            code: err.response.data.msg
+          };
+        });
     },
-    tuichu(){
-      localStorage.setItem("ele_login",false)
-      this.$router.push("/index")
+    tuichu() {
+      localStorage.setItem("ele_login", false);
+      this.$router.push("/index");
     },
     virtical() {
       var time = 10;
@@ -109,7 +103,6 @@ export default {
           this.color = "color:#ddd";
           time--;
         }
-        
       }, 1000);
     }
   }

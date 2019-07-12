@@ -41,6 +41,11 @@ const router = new Router({
       ]
     },
     {
+      path: "/phoneLogin",
+      name: "phoneLogin",
+      component: () => import('../views/phoneLogin.vue')
+    },
+    {
       path: "/shop",
       name: "shop",
       component: () => import('../views/shop/ele-store.vue'),
