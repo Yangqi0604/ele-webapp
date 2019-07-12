@@ -4,12 +4,12 @@
       <div class="story">
         <div class="picture">
           <img
-            src="https://fuss10.elemecdn.com/0/23/d60eeaceea4834916fe9747a5f69apng.png?imageMogr/format/webp/thumbnail/!460x260r/gravity/Center/crop/460x260/"
+            :src="indexdata.header_image"
             alt
           />
         </div>
-        <h3>顶顶香只为与你“香”遇</h3>
-        <span>顶顶香---最具特色的煎饼制作世家！用创新模式和思维，配以丰富健康高品质食材，全程零添加，用最传统的烹...</span>
+        <h3>{{indexdata.title}}</h3>
+        <span>{{indexdata.brand_intros[0].brief}}</span>
         <div class="brand">
           <p>查看品牌故事</p>
         </div>
@@ -20,10 +20,22 @@
         <h3>配送信息</h3>
         <ul>
           <li style="display:flex">
-            <span>蜂鸟专送</span>约56分钟送达，距离2.6km
+            <span>{{indexdatas.rst.delivery_mode.text}}</span>约56分钟送达，距离2.6km
           </li>
-          <li>配送费￥1.1</li>
+          <li>{{indexdatas.rst.piecewise_agent_fee.description}}</li>
         </ul>
+      </div>
+    </div>
+    <div class="serve">
+      <div class="service">
+        <h3>商家服务</h3>
+        <ul>
+          <li>
+            <span>{{indexdatas.rst.supports[0].icon_name}}</span>
+          </li>
+          <li style="margin-left:.5rem" > {{indexdatas.rst.supports[0].description}}</li>
+        </ul>
+         <!-- v-if="indexdata.rst.supports[0].description!==''" -->
       </div>
     </div>
     <div class="action">
@@ -33,6 +45,12 @@
           <div>
             <img
               src="https://fuss10.elemecdn.com/c/ad/432a9480afdee672b2e5536f17c4cpng.png?imageMogr/format/webp/thumbnail/!200x200r/gravity/Center/crop/200x200/"
+              alt
+            />
+          </div>
+          <div>
+            <img
+              src="http://fuss10.elemecdn.com/6/0a/99f0a90fbd5f4ac5fc38abb8a9b8dpng.png?imageMogr/format/webp/thumbnail/!200x200r/gravity/Center/crop/200x200/"
               alt
             />
           </div>
@@ -64,11 +82,14 @@
           </li>
           <li>
             <span>地址</span>
-            <span style="width:70%">西安市高新区唐延路11号禾盛京广中心T11商场3层70342、70343</span>
+            <div class="site">
+              <span>西安市高新区唐延路11号禾盛京广中心</span>
+              <p>T11商场3层70342、70343</p>
+            </div>
           </li>
           <li>
             <span>营业时间</span>
-            <span>10：30-21:00</span>
+            <span>{{indexdatas.rst.opening_hours[0]}}</span>
           </li>
         </ul>
       </div>
@@ -87,12 +108,24 @@ export default {
   created() {
     this.getData();
   },
+  data(){
+    return{
+      indexdata:{},
+      indexdatas:{}
+    }
+  },
   methods: {
     getData() {
       this.$axios("/profile/seller").then(res => {
-        console.log(res.data);
+        // console.log(res.data);
+        this.indexdata=res.data
+        // console.log(this.indexdata)
       });
-    }
+      this.$axios("/profile/batch_shop").then(rst =>{
+        // console.log(rst.data);
+        this.indexdatas=rst.data
+      })
+    },  
   }
 };
 </script>
@@ -125,6 +158,12 @@ export default {
 .seller .story span {
   font-size: 0.8125rem;
   line-height: 1rem;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+  -webkit-line-clamp:2; /** 显示的行数 **/
+  overflow: hidden;  /** 隐藏超出的内容 **/
 }
 .seller .brand p {
   text-align: center;
@@ -157,6 +196,33 @@ export default {
   width: 4rem;
   text-align: center;
 }
+.seller .serve {
+  background-color: #fff;
+  margin-bottom: 0.4rem;
+}
+.seller .serve .service {
+  width: 90%;
+  margin: 1rem auto;
+}
+.seller .serve .service h3 {
+  font-weight: 700;
+  line-height: 2.8rem;
+}
+.seller .serve .service ul {
+  font-size: 0.8125rem;
+  line-height: 1.3rem;
+  padding-top: .5rem;
+  padding-bottom: 2rem;
+  display: flex;
+  align-content: center;
+  text-align: center;
+}
+.seller .serve .service ul li span{
+  border: 1px solid black;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: block;
+}
 .seller .action {
   background-color: #fff;
   padding-bottom: 1rem;
@@ -171,7 +237,7 @@ export default {
 }
 .seller .action .photo {
   display: flex;
-  width: 50%;
+  width: 75%;
   justify-content: space-between;
 }
 .seller .action .photo img {
@@ -187,6 +253,9 @@ export default {
   padding-top: 1.2rem;
   margin: 0 auto;
 }
+.seller .shops .info h3{
+  font-weight: 700;
+}
 .seller .shops .info p {
   font-size: 0.8125rem;
   line-height: 3rem;
@@ -200,7 +269,17 @@ export default {
   font-size: 0.8125rem;
   height: 3rem;
 }
-
+.seller .shops .info ul li .site{
+  width: 70%;
+}
+.seller .shops .info ul li .site span{
+  float:right;
+} 
+.seller .shops .info ul li .site p{
+  border:none;
+  float:right;
+  line-height: 1rem;
+}
 .fa-angle-right {
   color: #ccc;
   font-size: 1.4rem;
@@ -217,5 +296,8 @@ export default {
   height: 2rem;
   display: flex;
   justify-content: space-between;
+}
+.seller .business .aptitude h3{
+  font-weight: 700;
 }
 </style>
