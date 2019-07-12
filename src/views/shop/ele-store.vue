@@ -1,49 +1,48 @@
 <template>
   <div>
-    <div class="elestore-head">
-      <div class="estoreHead-top">
+    <div class="elestore-head" v-if="indexdata.rst">
+      <div class="estoreHead-top" :style="{backgroundImage:'url('+indexdata.rst.scheme+')'}">
         <i class="fa fa-angle-left fa-lg" @click="$router.push('/home')"></i>
-        <div>
+        <div :style="{backgroundImage:'url('+indexdata.rst.image_path+')'}">
           <p>品牌</p>
         </div>
       </div>
       <div class="estoreHead-bottom">
         <h2>
-          <span>顶顶香（T11-Block店）</span>
+          <span>{{indexdata.rst.name}}</span>
           <i class="fa fa-caret-right"></i>
         </h2>
-        <div>
-          <span>评价4.6</span>
-          <span>月售1291单</span>
-          <span>蜂鸟专送约48分钟</span>
+        <div v-if="indexdata.rst">
+          <span>评价{{indexdata.rst.rating}}</span>
+          <span>月售{{indexdata.rst.recent_order_num}}单</span>
+          <span>蜂鸟专送约{{indexdata.rst.order_lead_time}}分钟</span>
         </div>
         <div>
-          <p>￥11</p>
+          <p>￥{{indexdata.redpack[0].value}}</p>
           <p>无门槛</p>
           <p>领取</p>
         </div>
         <div>
           <span>满减</span>
           <span>
-            <p>满35减17</p>
-            <p>满65减29</p>
-            <p>满95减40</p>
+            <p>{{indexdata.rst.activities[0].description}}</p>
+
           </span>
           <span>
-            <p>3个优惠券</p>
+            <p>{{indexdata.rst.activities.length}}个优惠券</p>
             <i class="fa fa-caret-down"></i>
           </span>
         </div>
         <div>
-          <p>公告:欢迎光临，用餐高峰期请提前下单，谢谢</p>
+          <p>公告:{{indexdata.rst.promotion_info}}</p>
         </div>
       </div>
-      <div class="estoreHead-switch">
-        <router-link to="/eleStore-diancan" tag="p">点餐</router-link>
-        <router-link to="/eleStore-coment" tag="p">评价</router-link>
-        <router-link to="/eleStore-seller" tag="p">商家</router-link>
-      </div>
     </div>
+    <div  class="estoreHead-switch">
+      <router-link to="/eleStore-diancan" tag="p">点餐</router-link>
+      <router-link to="/eleStore-coment" tag="p">评价</router-link>
+      <router-link to="/eleStore-seller" tag="p">商家</router-link>
+    </div>    
     <router-view></router-view>
   </div>
 </template>
@@ -51,22 +50,39 @@
 <script>
 export default {
   name: "ele-store",
+    data(){
+        return{
+            indexdata:{},
+            // switchP:false,
+        }
+    },
   created() {
     this.getData();
   },
+  // mounted(){
+  //   this.positonFix()
+  // },
   methods: {
     getData() {
       this.$axios("/profile/batch_shop").then(res => {
         console.log(res.data);
+        this.indexdata=res.data
       });
-    }
+    },
+    // positonFix(){
+    //   let scrollTop=document.documentElement.scrollTop,
+    //   var switchTop=document.body.offsetTop,
+    //   if(scrollTop>switchTop){
+    //     this.switchP=true
+    //   }
+
+    // }
   }
 };
 </script>
 
 <style scoped>
 .estoreHead-top {
-  background-image: url(https://fuss10.elemecdn.com/a/c1/ead69c6a1e0c515aa9cdbd6314eccpng.png?imageMogr/format/webp/thumbnail/750x/);
   background-size: cover;
   background-repeat: no-repeat;
   height: 6.25rem;
@@ -82,7 +98,7 @@ export default {
 .estoreHead-top div {
   width: 5rem;
   height: 5rem;
-  background-image: url(https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/150x/);
+  /* background-image: url(https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/150x/); */
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
@@ -107,6 +123,16 @@ export default {
   font-weight: 600;
   font-size: 1.35rem;
   color: #333;
+  display:flex;
+  height: 2rem;
+  justify-content:center;
+}
+.estoreHead-bottom h2 span{
+      width: 63%;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .estoreHead-bottom div:nth-of-type(1) {
   color: #666;
@@ -152,6 +178,7 @@ export default {
 }
 .estoreHead-bottom div:nth-of-type(3) > span:nth-of-type(2) {
   color: #999;
+  margin-left: -2.2rem;
 }
 .estoreHead-bottom div:nth-of-type(3) > span:nth-of-type(3) {
   color: #999;
@@ -169,11 +196,17 @@ export default {
   justify-content: space-around;
   color: #666;
   font-weight: 700;
-}
-.estoreHead-switch {
+  position:sticky;
+  top:0px;
+  background-color: #fff;
+  align-items: center;
   height: 2.5rem;
+  z-index:100;
 }
-.router-link-active {
-  border-bottom: 1px solid #54acff;
+.estoreHead-switch>p{
+  height:60%;
+}
+.router-link-exact-active{
+  border-bottom: 3px solid #54acff;
 }
 </style>
