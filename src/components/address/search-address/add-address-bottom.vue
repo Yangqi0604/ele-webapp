@@ -1,15 +1,15 @@
 <template>
-    <div class="address-bottom">
-      <i class="fa fa-plus-circle"></i>
-      <div>{{addTitle}}</div>
-    </div>
+  <div class="address-bottom">
+    <i class="fa fa-plus-circle"></i>
+    <div>{{addTitle}}</div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "add-address-bottom" ,
-        props:["addTitle"]
-    }
+  export default {
+    name: "add-address-bottom",
+    props: ["addTitle"]
+  }
 </script>
 
 <style scoped>
@@ -30,9 +30,10 @@
     color: #3190e8;
     font-size: 1.1rem;
   }
+
   .address-bottom > i {
-    margin-right:0.3rem;
-    font-size:1.3rem ;
+    margin-right: 0.3rem;
+    font-size: 1.3rem;
   }
 
 </style>

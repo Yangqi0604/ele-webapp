@@ -1,9 +1,9 @@
 <template>
     <div>
-        <form class="search-form">
+        <form class="search-form" @submit.prevent="search">
             <div class="box-search">
                 <i class="fa fa-search"></i>
-                <input type="text" placeholder="输入商家，商品名称" v-model="keyword">
+                <input type="search" placeholder="输入商家，商品名称" v-model="keyword">
                 <i class="fa fa-times-circle-o delete"></i>
             </div>
             <button type="submit" class="btn">搜索</button>
@@ -33,6 +33,14 @@
             }
         },
         methods:{
+          search(){
+            //得到搜索关键字进行搜索
+            const keyword = this.keyword.trim()
+            //进行搜索
+            if(keyword){
+
+            }
+          }
             
         }
     }
