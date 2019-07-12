@@ -19,7 +19,9 @@ export default {
   data() {
     return {
       swipeImgs: [],
-      entries: []
+      entries: [],
+      page: 1,
+      size: 5
     };
   },
   created() {
@@ -34,6 +36,11 @@ export default {
         console.log(this.entries);
         // this.homeInfo = res.data;
       });
+      this.$axios
+        .post(`/profile/restaurants/${this.page}/${this.size}`, this.data)
+        .then(res => {
+          console.log(res.data);
+        });
     }
   },
   components: {
@@ -46,5 +53,4 @@ export default {
 };
 </script>
 <style scoped>
-
 </style>

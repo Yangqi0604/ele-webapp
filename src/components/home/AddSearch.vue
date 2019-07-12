@@ -2,17 +2,17 @@
   <div>
     <!-- 饿了么 -->
     <div class="bigSearch">
-      <div :class="[change?'topSearch':'home-adress-map']">
+      <div class="topSearch">
         <span :class="[change?'fa fa-map-marker':'fa fa-chevron-left']"></span>
         <h1 :class="[change?'':'fa fa-map-marker']">西安市人民政府</h1>
         <i :class="[change?'fa fa-sort-desc':'fa fa-bell-o']"></i>
       </div>
-      <div :class="[change?'bottomSearch':'search']" v-if="change">
+      <div class="bottomSearch">
         <span :class="[change?'fa fa-search':'fa fa-search']"></span>
         <input type="text" placeholder="搜索饿了么商家，商品名称" />
       </div>
     </div>
-    <button @click="changeclick">改变</button>
+    <!-- <button @click="changeclick">改变</button> -->
   </div>
 </template>
 
@@ -108,25 +108,16 @@ export default {
   font-size: 1rem;
 }
 
-/* 美团 */
-/* .address {
-  width: 100%;
-  height: 3rem;
-  background: gray;
-} */
-.home-adress-map {
+/*.home-adress-map {
   height: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  /* background: gray; */
 }
 
 .search {
-  /* width: 100%; */
   height: 2rem;
-  /* background: red; */
   display: flex;
   align-items: center;
   margin-top: 0.5rem;
@@ -152,5 +143,5 @@ export default {
   background: #e4e4e4;
   opacity: 0.5;
   border-radius: 0 0.5rem 0.5rem 0;
-}
+} */
 </style>
