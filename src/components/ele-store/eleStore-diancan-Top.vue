@@ -1,43 +1,25 @@
 <template>
     <div class="merchant">
-        <h1>商家推荐</h1>
+        <h1>{{title}}</h1>
         <div class="merchantSon">
-            <div class="merchantSonOne">
-                <img src="../../assets/logo.png" alt="">
-                <p>原汤丸子粉丝</p>
-                <span>月销47好评率88%</span>
-                <h2>￥22<button>+</button></h2>
+            <div class="merchantSonOne" v-for="(i,index) in data" :key="index">
+                <img :src="i.image_path" alt="">
+                <p>{{i.name}}</p>
+                <span>{{i.tips}}</span>
+                <h2>￥{{i.activity.benefit_text}}<button>+</button></h2>
             </div>
-          <div class="merchantSonOne">
-            <img src="../../assets/logo.png" alt="">
-            <p>原汤丸子粉丝</p>
-            <span>月销47好评率88%</span>
-            <h2>￥22<button>+</button></h2>
-          </div>
-          <div class="merchantSonOne">
-            <img src="../../assets/logo.png" alt="">
-            <p>原汤丸子粉丝</p>
-            <span>月销47好评率88%</span>
-            <h2>￥22<button>+</button></h2>
-          </div>
-          <div class="merchantSonOne">
-            <img src="../../assets/logo.png" alt="">
-            <p>原汤丸子粉丝</p>
-            <span>月销47好评率88%</span>
-            <h2>￥22<button>+</button></h2>
-          </div>
-          <div class="merchantSonOne">
-            <img src="../../assets/logo.png" alt="">
-            <p>原汤丸子粉丝</p>
-            <span>月销47好评率88%</span>
-            <h2>￥22<button>+</button></h2>
-          </div>
         </div>
     </div>
 </template>
 
 <script>
     export default {
+      props:['data'],
+      data(){
+        return{
+          title:'商家推荐'
+        }
+      },
         name: "eleStore-diancan-Top"
     }
 </script>
