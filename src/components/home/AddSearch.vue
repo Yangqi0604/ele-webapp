@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       title: "",
-      SearchBar:false
+      SearchBar: false
     };
   },
   computed: {
@@ -31,17 +31,20 @@ export default {
     }
     // ...mapState(["change"])
   },
-  mounted () {
-    window.addEventListener('scroll', this.handleScroll)
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
   },
   methods: {
-    handleScroll () {
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      let offsetTop =this.$refs.s.offsetTop
+    handleScroll() {
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      let offsetTop = this.$refs.s.offsetTop;
       if (scrollTop > offsetTop) {
-        this.SearchBar = true
+        this.SearchBar = true;
       } else {
-        this.SearchBar = false
+        this.SearchBar = false;
       }
     },
     // changeclick() {
@@ -102,12 +105,12 @@ export default {
   top: 0;
   z-index: 999;
 }
-.bottomSearch >p {
+.bottomSearch > p {
   width: 90%;
   height: 2.2rem;
   line-height: 2.2rem;
   text-align: center;
-  background:white;
+  background: white;
   color: #999;
   padding-left: 1rem;
 }
@@ -116,7 +119,7 @@ export default {
   color: #999;
   font-size: 1rem;
 }
-.bottomSearchOne{
+.bottomSearchOne {
   width: 100%;
   height: 3rem;
   background: #0085ff;
@@ -124,25 +127,23 @@ export default {
   justify-content: center;
   position: relative;
 }
-.bottomSearchOne>p {
+.bottomSearchOne > p {
   width: 90%;
   height: 2.2rem;
   line-height: 2.2rem;
   text-align: center;
-  background:white;
+  background: white;
   color: #999;
   padding-left: 1rem;
-
 }
-.bottomSearchOne> span {
+.bottomSearchOne > span {
   display: inline-block;
   color: #999;
   font-size: 1rem;
   position: absolute;
   left: 22%;
-  top:20%
+  top: 20%;
 }
-
 
 /*.home-adress-map {
   height: 3rem;
