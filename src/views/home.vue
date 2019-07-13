@@ -4,7 +4,7 @@
     <item-icon :entries="entries" />
     <swiper-content :swipeImgs="swipeImgs" />
     <nav-bar />
-    <homeShop-list />
+    <homeShop-list v-for="(item,index) in restaurants" :key="index" :restaurant="item.restaurant" />
   </div>
 </template>
 
@@ -21,7 +21,8 @@ export default {
       swipeImgs: [],
       entries: [],
       page: 1,
-      size: 5
+      size: 5,
+      restaurants: []
     };
   },
   created() {
@@ -40,6 +41,7 @@ export default {
         .post(`/profile/restaurants/${this.page}/${this.size}`, this.data)
         .then(res => {
           console.log(res.data);
+          this.restaurants = res.data;
         });
     }
   },

@@ -29,14 +29,24 @@ const router = new Router({
           component: () => import('../views/mine.vue')
         },
         {
-          path: "/test",
-          name: "test",
-          component: () => import('../views/test.vue')
+          path: "/dstance",
+          name: "dstance",
+          component: () => import('../views/distance/ele-distance.vue')
         },
         {
           path: "/order",
           name: "order",
           component: () => import('../views/order.vue')
+        },
+        {
+          path: "/searchAddress",
+          name: "searchAddress",
+          component: () => import('../views/address/search-address.vue')
+        },
+        {
+          path: "/addAddress",
+          name: "addAddress",
+          component: () => import('../views/address/add-address.vue')
         }
       ]
     },
@@ -70,8 +80,14 @@ const router = new Router({
           path: "/eleStore-seller",
           name: "eleStore-seller",
           component: () => import('../views/shop/eleStore-seller.vue')
-        }
+        },
+
       ]
+    },
+    {
+      path: "/shoporder",
+      name: "shoporder",
+      component: () => import('../views/order/shopOrder.vue')
     }
   ]
 })

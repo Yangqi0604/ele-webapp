@@ -45,34 +45,34 @@ export default {
   },
   methods: {
     keyWordChange() {
-      // this.$axios("https://elm.cangdu.org/v1/cities?type=group").then(res => {
-      //   // console.log(res.data);
-      //   this.keys = Object.keys(res.data);
-      //   this.keys.sort();
-      //   // console.log(this.keys);
-      //   this.cityInfo = Object.keys.longitude;
-      //   console.log(this.cityInfo);
-      // });
-      //   this.cityInfo.forEach(key => {
-      //     console.log(key);
-      //     this.key.forEach(XY => {
-      //       this.cityX = XY.longitude;
-      //       console.log(this.cityX);
-      //     });
-      //   });
-      this.$axios(
-        `https://elm.cangdu.org/v4/restaurants?geohash=31.22967,121.4762&keyword=${this.key_word}`
-      )
-        .then(res => {
-          // console.log(res.data);
-          //   this.result = res.data;
-          this.searchInfo = res.data;
-          console.log(this.result);
-        })
-        .catch(err => {
-          this.result = "";
-          this.searchInfo = "";
+      this.$axios("https://elm.cangdu.org/v1/cities?type=guess").then(res => {
+        console.log(res.data);
+        this.keys = Object.keys(res.data);
+        this.keys.sort();
+        // console.log(this.keys);
+        this.cityInfo = Object.keys;
+        // console.log(this.cityInfo);
+      });
+      this.cityInfo.forEach(key => {
+        // console.log(key);
+        this.key.forEach(XY => {
+          this.cityX = XY.longitude;
+          // console.log(this.cityX);
         });
+      });
+      // this.$axios(
+      //   `https://elm.cangdu.org/v4/restaurants?geohash=31.22967,121.4762&keyword=${this.key_word}`
+      // )
+      //   .then(res => {
+      //     // console.log(res.data);
+      //     //   this.result = res.data;
+      //     this.searchInfo = res.data;
+      //     console.log(this.result);
+      //   })
+      //   .catch(err => {
+      //     this.result = "";
+      //     this.searchInfo = "";
+      //   });
     },
     searchHadle() {
       if (!this.this.key_word) return;
