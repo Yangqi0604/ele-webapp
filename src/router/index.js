@@ -71,13 +71,13 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  const isLogin = localStorage.ele_login ? true : false;
-  if (to.path == "/phoneLogin") {
-    next();
-  } else {
-    //是否登录状态下
-    isLogin ? next() : next("/phoneLogin");
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   const isLogin = localStorage.ele_login ? true : false;
+//   if (to.path == "/phoneLogin") {
+//     next();
+//   } else {
+//     //是否登录状态下
+//     isLogin ? next() : next("/phoneLogin");
+//   }
+// });
 export default router;
