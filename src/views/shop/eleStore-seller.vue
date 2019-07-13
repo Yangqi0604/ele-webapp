@@ -71,20 +71,19 @@
         <ul>
           <li>
             <span>品类</span>
-            <span>川湘菜，西北菜</span>
+            <span>{{indexdatas.rst.flavors[0].name}},{{indexdatas.rst.flavors[1].name}}</span>
           </li>
           <li>
             <span>商家电话</span>
             <span>
-              02989287580
+              {{indexdatas.rst.phone}}
               <i class="fa fa-angle-right"></i>
             </span>
           </li>
           <li>
             <span>地址</span>
             <div class="site">
-              <span>西安市高新区唐延路11号禾盛京广中心</span>
-              <p>T11商场3层70342、70343</p>
+              <span>{{indexdatas.rst.address}}</span>
             </div>
           </li>
           <li>
@@ -189,7 +188,7 @@ export default {
   padding-bottom: 0.5rem;
 }
 .seller .delivery .message ul li span {
-  background-color: blue;
+  background-color: #0097ff;
   color: #fff;
   border-radius: 3px;
   display: block;
@@ -271,15 +270,12 @@ export default {
 }
 .seller .shops .info ul li .site{
   width: 70%;
+  text-align: right;
 }
 .seller .shops .info ul li .site span{
-  float:right;
+  width: 70%;
+  font-size: .74rem;
 } 
-.seller .shops .info ul li .site p{
-  border:none;
-  float:right;
-  line-height: 1rem;
-}
 .fa-angle-right {
   color: #ccc;
   font-size: 1.4rem;
