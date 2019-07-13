@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section>
+    <section v-if="indexdata.rating">
       <div>{{indexdata.rating.shop_score.toFixed(1)}}</div>
       <div>
         <span>商家评分</span>
@@ -25,7 +25,7 @@
     </section>
     <div class="cblank"></div>
     <ul class="coment-content">
-      <li v-for="(d,sid) in indexdata.tags" :key="sid">{{d.name}}{{d.count}}</li>
+      <li v-for="(d,sid) in indexdata.tags" :key="sid" @click="colorChange(sid)" :class="{ liBackground:changeLeftBackground == sid}">{{d.name}}{{d.count}}</li>
     </ul>
 
     <ul class="coment-text">
@@ -67,7 +67,8 @@ export default {
   data() {
     return {
         restaurant_id: 1,
-        indexdata:{}
+        indexdata:{},
+        changeLeftBackground:0
     };
   },
   created() {
@@ -76,10 +77,11 @@ export default {
   methods: {
     getData() {
       this.$axios("/profile/comments").then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         this.evaluation = res.data;
         this.indexdata=res.data
       });
+    
       //   如果数据不够可以打开下面这条，restaurant_id是点击对应的商铺ID
         // this.$axios(
         //   `https://elm.cangdu.org/ugc/v2/restaurants/${this.restaurant_id}/ratings`
@@ -87,6 +89,9 @@ export default {
         //   console.log(res.data);
         //   this.indexdata=res.data
         // });
+    },
+    colorChange(sid){
+      this.changeLeftBackground=sid
     }
   }
 };
@@ -255,4 +260,8 @@ section > div:nth-of-type(4) {
   text-overflow: ellipsis;
   background-color: #ebf5ff;
 }
+  .liBackground {
+      background-color: #0097ff !important;
+      color: #fff !important;
+  }
 </style>
