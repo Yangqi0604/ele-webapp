@@ -84,11 +84,14 @@ const router = new Router({
 
       ]
     },
+<<<<<<< HEAD
     {
       path: "/shoporder",
       name: "shoporder",
       component: () => import('../views/order/shopOrder.vue')
     }
+=======
+>>>>>>> zjh
   ]
 })
 
