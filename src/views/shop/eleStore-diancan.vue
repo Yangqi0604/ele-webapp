@@ -2,6 +2,9 @@
   <div>
     <ele-store-diancan-top :data="recommend"></ele-store-diancan-top>
     <ele-store-diancan-bottom :data="menu"></ele-store-diancan-bottom>
+    <footer class="cartFoot">
+      <div class="fa fa-cart-plus cartIcon" aria-hidden="true"></div>
+    </footer>
   </div>
 </template>
 
@@ -19,7 +22,7 @@ export default {
   data(){
     return{
       recommend:{},
-      menu:{}
+      menu:{},
     }
   },
   methods: {
@@ -35,4 +38,25 @@ export default {
 </script>
 
 <style scoped>
+  .cartFoot{
+    width: 100%;
+    height: 3.2rem;
+    position: fixed;
+    bottom: 0;
+    background:rgba(0,0,0,0.7);
+  }
+  .cartFoot>.cartIcon{
+    display: block;
+    width: 3.5rem;
+    height: 3.5rem;
+    color: #666;
+    background:rgba(0,0,0,0.7);
+    border-radius: 50%;
+    font-size: 2rem ;
+    text-align: center;
+    line-height: 3.5rem;
+    position: absolute;
+    left: 1.4rem;
+    top: -.8rem;
+  }
 </style>

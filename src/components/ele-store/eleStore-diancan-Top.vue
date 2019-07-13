@@ -67,7 +67,7 @@
 .merchantSonOne>h2{
   width: 100%;
   color: red;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   display: flex;
   justify-content: space-between;

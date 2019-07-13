@@ -2,7 +2,7 @@
    <div>
      <div class="classify">
        <ul class="classifyLeft">
-         <li v-for="(i,index) in data" :key="index">
+         <li v-for="(i,index) in data" :key="index" @click="_shoplist(index)">
            <div>
              <img :src="i.icon_url" alt="">
              {{i.name}}
@@ -10,34 +10,36 @@
          </li>
        </ul>
        <div class="classifyRight">
-         <div class="bigSon" v-for="(j,ind) in data" :key="ind">
-           <h1 style="color:#666;font-weight: bold;font-size: 1.2rem;margin-bottom:1rem;margin-top: 1rem">{{j.name}}</h1>
-           <div class="classifyRightSon" v-for="(s,idx) in j.foods" :key="idx">
+         <h1 style="font-size: 1.1rem;font-weight: bold;color: #666" >{{data[iis].name}}</h1>
+         <div class="bigSon" v-for="(j,ind) in data" :key="ind" v-if="data">
+           <div class="classifyRightSon" v-for="(s,idx) in food" :key="idx" v-if="data">
              <img :src="s.image_path" alt="">
              <div>
                <h1 style="font-weight: bold;font-size: 1rem">{{s.name}}</h1>
                <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis; width: 10rem">{{s.description}}</p>
-
                <p>{{s.tips}}</p>
-               <h2>￥{{s.activity.fixed_price}}<button @click="cartAdd">+</button></h2>
+               <h2>￥{{s.activity.fixed_price}}<button>+</button></h2>
              </div>
            </div>
          </div>
        </div>
      </div>
-    <footer class="cartFoot">
-        <div class="fa fa-cart-plus cartIcon" aria-hidden="true" ref="dd"></div>
-    </footer>
    </div>
 </template>
 
 <script>
     export default {
         props:['data'],
+        data(){
+          return{
+            iis:0,
+            food:[],
+          }
+        },
         methods:{
-          cartAdd(){
-            this.$refs.dd.style.backgroundColor = '#2396ff'
-            this.$refs.dd.style.color = 'white'
+          _shoplist(index){
+            this.iis = index;
+            this.food=this.data[index].foods;
           }
         },
         name: "eleStore-diancan-Bottom"
@@ -98,11 +100,11 @@
     display: flex;
   }
   .classifyRightSon>img{
-    width: 7rem;
+    width: 35%;
     height: 7rem;
   }
   .classifyRightSon>div{
-    width: 12rem;
+    width: 65%;
     height: 7rem;
     display: flex;
     flex-direction: column;
@@ -133,25 +135,5 @@
     background:#0085ff;
     margin-right: 1rem;
   }
-  .cartFoot{
-    width: 100%;
-    height: 3.5rem;
-    position: fixed;
-    bottom: 0;
-    background:rgba(0,0,0,0.7);
-  }
-.cartFoot>.cartIcon{
-  display: block;
-  width: 3.5rem;
-  height: 3.5rem;
-  color: #666;
-  background:rgba(0,0,0,0.7);
-  border-radius: 50%;
-  font-size: 2rem ;
-  text-align: center;
-  line-height: 3.5rem;
-  position: absolute;
-  left: 1.4rem;
-  top: -.8rem;
-}
+
 </style>

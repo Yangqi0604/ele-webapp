@@ -7,10 +7,14 @@
         <h1 :class="[change?'':'fa fa-map-marker']">西安市人民政府</h1>
         <i :class="[change?'fa fa-sort-desc':'fa fa-bell-o']"></i>
       </div>
-      <div :class="[SearchBar?'bottomSearch':'bottomSearchOne']" ref="s">
-        <span :class="[change?'fa fa-search':'fa fa-search']"></span>
-        <p>搜索饿了么商家，商品名称</p>
-      </div>
+
+        <div :class="[SearchBar?'bottomSearch':'bottomSearchOne']" ref="s">
+          <div class="whiteBar">
+            <span :class="[change?'fa fa-search':'fa fa-search']"></span>
+            <p>搜索饿了么商家，商品名称</p>
+          </div>
+        </div>
+
     </div>
     <!-- <button @click="changeclick">改变</button> -->
   </div>
@@ -40,8 +44,8 @@ export default {
         window.pageYOffset ||
         document.documentElement.scrollTop ||
         document.body.scrollTop;
-      let offsetTop = this.$refs.s.offsetTop;
-      if (scrollTop > offsetTop) {
+      let offsetTops = this.$refs.s.offsetTop;
+      if (scrollTop >offsetTops) {
         this.SearchBar = true;
       } else {
         this.SearchBar = false;
@@ -102,10 +106,11 @@ export default {
   height: 3rem;
   background: #0085ff;
   position: fixed;
+  display: flex;
   top: 0;
   z-index: 999;
 }
-.bottomSearch > p {
+.bottomSearch >.whiteBar {
   width: 90%;
   height: 2.2rem;
   line-height: 2.2rem;
@@ -114,7 +119,7 @@ export default {
   color: #999;
   padding-left: 1rem;
 }
-.bottomSearch > span {
+.bottomSearch >.whiteBar>p {
   display: inline-block;
   color: #999;
   font-size: 1rem;
@@ -125,25 +130,24 @@ export default {
   background: #0085ff;
   display: flex;
   justify-content: center;
-  position: relative;
 }
-.bottomSearchOne > p {
+.bottomSearchOne >.whiteBar {
   width: 90%;
   height: 2.2rem;
   line-height: 2.2rem;
-  text-align: center;
   background: white;
   color: #999;
-  padding-left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.bottomSearchOne > span {
+.bottomSearchOne >.whiteBar > span {
   display: inline-block;
+  width: 1.2rem;
   color: #999;
   font-size: 1rem;
-  position: absolute;
-  left: 22%;
-  top: 20%;
 }
+
 
 /*.home-adress-map {
   height: 3rem;
