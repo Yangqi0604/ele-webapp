@@ -1,20 +1,20 @@
 <template>
-    <div class="search-hot">
-        <div class="hot-title">热门搜索</div>
-        <section class="hot-list">
-            <ul>
-                <li class="hot-list-item">小龙虾</li>
-                <li class="hot-list-item">砂锅</li>
-                <li class="hot-list-item">小竹签烤肉</li>
-                <li class="hot-list-item">万达影城</li>
-                <li class="hot-list-item">小竹签烤肉</li>
-                <li class="hot-list-item">万达影城</li>
-                <li class="hot-list-item">小竹签烤肉</li>
-                <li class="hot-list-item">万达影城</li>
-            </ul>
-        </section>
-        
-    </div>
+<!--    <div class="search-hot">-->
+<!--        <div class="hot-title">热门搜索</div>-->
+<!--        <section class="hot-list">-->
+<!--            <ul>-->
+<!--                <li class="hot-list-item">小龙虾</li>-->
+<!--                <li class="hot-list-item">砂锅</li>-->
+<!--                <li class="hot-list-item">小竹签烤肉</li>-->
+<!--                <li class="hot-list-item">万达影城</li>-->
+<!--                <li class="hot-list-item">小竹签烤肉</li>-->
+<!--                <li class="hot-list-item">万达影城</li>-->
+<!--                <li class="hot-list-item">小竹签烤肉</li>-->
+<!--                <li class="hot-list-item">万达影城</li>-->
+<!--            </ul>-->
+<!--        </section>-->
+<!--        -->
+<!--    </div>-->
 </template>
 
 <script>
@@ -24,7 +24,7 @@
 </script>
 
 <style scoped>
-    @import "../../../static/theme/0/Search/search-hot/index.css" ;
+    @import "../../../static/theme/1/Search/search-hot/index.css" ;
     /*.search-hot {*/
     /*    background-color: #fff;*/
     /*    padding: 0.3rem 0.2rem;*/
@@ -52,5 +52,5 @@
     /*    background-color: #f7f7f7;*/
     /*    */
     /*}*/
-    
+
 </style>

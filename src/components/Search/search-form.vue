@@ -3,28 +3,84 @@
     <div class="search-form" @submit.prevent="search">
       <div class="box-search">
         <i class="fa fa-search"></i>
+<<<<<<< HEAD
         <input type="text" v-model="key_word" placeholder="输入商家，商品名称" />
         <i class="fa fa-times-circle-o delete"></i>
       </div>
       <button class="btn" @click="searchHadle">搜索</button>
     </div>
+=======
+        <input type="text"  placeholder="输入商家，商品名称" v-model="key_word"/>
+        <i class="fa fa-times delete"
+          v-show="key_word"
+           @click="deleteSearch"
+        ></i>
+      </div>
+      <button class="btn" type="submit"
+              @click="searchHadle"
+      >搜索</button>
+    </div>
+    <!--    如果有搜索结果 显示 结果-->
+>>>>>>> Alice
     <section class="search-suggestion" v-if="searchInfo.length">
       <ul>
         <li class="list-item" v-for="(item,index) in searchInfo" :key="index">
           <a class="search-suggestion-item">
+<<<<<<< HEAD
             <!-- <span class="item-search"> -->
             <i class="fa fa-search"></i>
             <span class="match-word">{{item.name || item}}</span>外卖
             <!-- </span> -->
+=======
+             <span class="item-search">
+              <i class="fa fa-search"></i>
+              <span class="match-word">{{key_word}}</span>{{item.name || filterMatch}}
+             </span> 
+>>>>>>> Alice
             <span class="result-count"></span>
           </a>
         </li>
       </ul>
     </section>
+<<<<<<< HEAD
+=======
+
+    <!--    如果没有搜索结果 显示：查找“搜索词”-->
+    <section class="search-suggestion " v-else  >
+      <ul v-if="key_word" >
+        <li class="list-item"  >
+          <a class="search-suggestion-item">
+             <span class="item-search">
+              <i class="fa fa-search"></i>
+              查找<span class="match-word">{{key_word}}</span>
+             </span>
+            <span class="result-count"></span>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <div class="search-hot" v-show="!key_word">
+      <div class="hot-title">热门搜索</div>
+      <section class="hot-list">
+        <ul>
+          <li class="hot-list-item">小龙虾</li>
+          <li class="hot-list-item">砂锅</li>
+          <li class="hot-list-item">小竹签烤肉</li>
+          <li class="hot-list-item">万达影城</li>
+          <li class="hot-list-item">小竹签烤肉</li>
+          <li class="hot-list-item">万达影城</li>
+          <li class="hot-list-item">小竹签烤肉</li>
+          <li class="hot-list-item">万达影城</li>
+        </ul>
+      </section>
+
+    </div>
+>>>>>>> Alice
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 export default {
   name: "search-form",
   data() {
@@ -127,6 +183,126 @@ export default {
 /*    font-size: .28rem;*/
 /*    padding: 0;*/
 /*}*/
+=======
+  export default {
+    name: "search-form",
+    data() {
+      return {
+        key_word: "",
+        result: "",
+        searchInfo: "",
+        keys: [],
+        cityInfo: "",
+        allcities: [],
+        cityX: "" ,
+      };
+    },
+    watch: {
+      key_word() {
+        this.keyWordChange();
+      }
+    },
+    methods: {
+      keyWordChange() {
+        // this.$axios("https://elm.cangdu.org/v1/cities?type=group").then(res => {
+        //   // console.log(res.data);
+        //   this.keys = Object.keys(res.data);
+        //   this.keys.sort();
+        //   // console.log(this.keys);
+        //   this.cityInfo = Object.keys.longitude;
+        //   console.log(this.cityInfo);
+        // });
+        //   this.cityInfo.forEach(key => {
+        //     console.log(key);
+        //     this.key.forEach(XY => {
+        //       this.cityX = XY.longitude;
+        //       console.log(this.cityX);
+        //     });
+        //   });
+        this.$axios(
+          `https://elm.cangdu.org/v4/restaurants?geohash=31.22967,121.4762&keyword=${this.key_word}`
+        )
+          .then(res => {
+            console.log(res);
+            // console.log(res.data);
+            //   this.result = res.data;
+            this.searchInfo = res.data;
+            console.log(this.result);
+          })
+          .catch(err => {
+            this.result = "";
+            this.searchInfo = "";
+          });
+      },
+      searchHadle() {
+        if (!this.key_word) return;
+      },
+      deleteSearch(){
+        this.key_word="" ;
+        // this.noMatch = false;
+        
+      }
+    },
+    filters:{
+      filterMatch(value){
+        let str = value;
+        let num = this.key_word.length;
+        // let pos = str.indexOf(this.key_word);
+        let strNew = str.slice(num);
+        return strNew;
+      }
+    }
+  };
+</script>
+
+<style scoped>
+  @import "../../../static/theme/1/Search/search-form/index.css";
+  @import "../../../static/theme/1/Search/search-hot/index.css" ;
+    /*美团*/
+    /*.search-form {*/
+    /*    margin-top: .2rem;*/
+    /*    margin-bottom: .2rem;*/
+    /*    height: .8rem;*/
+    /*    position: relative;*/
+    /*    padding: 0 0.2rem;*/
+    /*}*/
+    /*.box-search {*/
+    /*    vertical-align: middle;*/
+    /*    position: relative;*/
+    /*    margin-right: 1.4rem;*/
+    /*    border-radius: .06rem;*/
+    /*    border: 1px #CCC solid;*/
+    /*    background: #FFF;*/
+    /*    height: .8rem;*/
+    /*    line-height: .8rem;*/
+    /*    padding: 0 .7rem 0 .7rem;*/
+    /*    -webkit-box-sizing: border-box;*/
+    /*}*/
+    /*!*搜索按钮*!*/
+    /*.box-search>i:nth-of-type(1){*/
+    /*    display: inline-block;*/
+    /*    position: absolute;*/
+    /*    left: .2rem;*/
+    /*    font-size: .4rem;*/
+    /*    color: #999;*/
+    /*    vertical-align: middle;*/
+    /*    font-style: normal;*/
+    /*    height: .8rem;*/
+    /*    line-height: .8rem;*/
+    /*}*/
+    /*!*input框*!*/
+    /*.box-search>input {*/
+    /*    width: 100%;*/
+    /*    border: none;*/
+    /*    background: rgba(255, 255, 255, 0);*/
+    /*    outline-style: none;*/
+    /*    display: inline-block;*/
+    /*    line-height: .28rem;*/
+    /*    height: 100%;*/
+    /*    font-size: .28rem;*/
+    /*    padding: 0;*/
+    /*}*/
+>>>>>>> Alice
 
 /*!*删除按钮*!*/
 /*.box-search .delete {*/
