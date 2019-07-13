@@ -129,7 +129,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .seller {
   background-color: #ccc;
   padding-bottom: 1rem;
