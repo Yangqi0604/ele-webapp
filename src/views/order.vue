@@ -1,4 +1,5 @@
 <template>
+
   <div class="order">
      <div class="order-processing">
        <div class="processing-top">
@@ -31,6 +32,7 @@
 
 <script>
 export default {};
+
 </script>
 
 <style lang="scss" scoped>
