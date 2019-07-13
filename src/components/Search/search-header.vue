@@ -5,12 +5,11 @@
                 <i class="fa fa-angle-left" ></i>
             </a>
         </div>
-        <div class="nav-header h1">搜索</div>
+        <div class="nav-header h1"></div>
         <div class="nav-wrap-right">
             <a href="">
                 <span class="nav-btn">
                      <i class=""></i>
-                    首页
                 </span>
             </a>
         </div>
@@ -34,7 +33,7 @@
 </script>
 
 <style scoped>
-    @import "../../../static/theme/0/Search/search-header/index.css" ;
+    @import "../../../static/theme/1/Search/search-header/index.css" ;
     /*美团*/
     /*左箭头*/
     /*.navbar {*/

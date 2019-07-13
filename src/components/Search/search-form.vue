@@ -1,53 +1,141 @@
 <template>
-    <div>
-        <form class="search-form" @submit.prevent="search">
-            <div class="box-search">
-                <i class="fa fa-search"></i>
-                <input type="search" placeholder="输入商家，商品名称" v-model="keyword">
-                <i class="fa fa-times-circle-o delete"></i>
-            </div>
-            <button type="submit" class="btn">搜索</button>
-        </form>
-        <section class="search-suggestion">
-            <ul>
-                <li class="list-item">
-                    <a  class="search-suggestion-item">
-                        <span class="item-search">
-                            <i class="fa fa-search"></i>
-                            <span class="match-word">小龙虾</span>外卖
-                        </span>
-                        <span class="result-count"></span>
-                    </a>
-                </li>
-            </ul>
-        </section>
+  <div>
+    <div class="search-form" @submit.prevent="search">
+      <div class="box-search">
+        <i class="fa fa-search"></i>
+        <input type="text"  placeholder="输入商家，商品名称" v-model="key_word"/>
+        <i class="fa fa-times delete"
+          v-show="key_word"
+           @click="deleteSearch"
+        ></i>
+      </div>
+      <button class="btn" type="submit"
+              @click="searchHadle"
+      >搜索</button>
     </div>
+    <!--    如果有搜索结果 显示 结果-->
+    <section class="search-suggestion" v-if="searchInfo.length">
+      <ul>
+        <li class="list-item" v-for="(item,index) in searchInfo" :key="index">
+          <a class="search-suggestion-item">
+             <span class="item-search">
+              <i class="fa fa-search"></i>
+              <span class="match-word">{{key_word}}</span>{{item.name || filterMatch}}
+             </span> 
+            <span class="result-count"></span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!--    如果没有搜索结果 显示：查找“搜索词”-->
+    <section class="search-suggestion " v-else  >
+      <ul v-if="key_word" >
+        <li class="list-item"  >
+          <a class="search-suggestion-item">
+             <span class="item-search">
+              <i class="fa fa-search"></i>
+              查找<span class="match-word">{{key_word}}</span>
+             </span>
+            <span class="result-count"></span>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <div class="search-hot" v-show="!key_word">
+      <div class="hot-title">热门搜索</div>
+      <section class="hot-list">
+        <ul>
+          <li class="hot-list-item">小龙虾</li>
+          <li class="hot-list-item">砂锅</li>
+          <li class="hot-list-item">小竹签烤肉</li>
+          <li class="hot-list-item">万达影城</li>
+          <li class="hot-list-item">小竹签烤肉</li>
+          <li class="hot-list-item">万达影城</li>
+          <li class="hot-list-item">小竹签烤肉</li>
+          <li class="hot-list-item">万达影城</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "search-form" ,
-        data(){
-            return {
-                keyword:""
-            }
-        },
-        methods:{
-          search(){
-            //得到搜索关键字进行搜索
-            const keyword = this.keyword.trim()
-            //进行搜索
-            if(keyword){
-
-            }
-          }
-            
-        }
+  export default {
+    name: "search-form",
+    data() {
+      return {
+        key_word: "",
+        result: "",
+        searchInfo: "",
+        keys: [],
+        cityInfo: "",
+        allcities: [],
+        cityX: "" ,
+      };
+    },
+    watch: {
+      key_word() {
+        this.keyWordChange();
+      }
+    },
+    methods: {
+      keyWordChange() {
+        // this.$axios("https://elm.cangdu.org/v1/cities?type=group").then(res => {
+        //   // console.log(res.data);
+        //   this.keys = Object.keys(res.data);
+        //   this.keys.sort();
+        //   // console.log(this.keys);
+        //   this.cityInfo = Object.keys.longitude;
+        //   console.log(this.cityInfo);
+        // });
+        //   this.cityInfo.forEach(key => {
+        //     console.log(key);
+        //     this.key.forEach(XY => {
+        //       this.cityX = XY.longitude;
+        //       console.log(this.cityX);
+        //     });
+        //   });
+        this.$axios(
+          `https://elm.cangdu.org/v4/restaurants?geohash=31.22967,121.4762&keyword=${this.key_word}`
+        )
+          .then(res => {
+            console.log(res);
+            // console.log(res.data);
+            //   this.result = res.data;
+            this.searchInfo = res.data;
+            console.log(this.result);
+          })
+          .catch(err => {
+            this.result = "";
+            this.searchInfo = "";
+          });
+      },
+      searchHadle() {
+        if (!this.key_word) return;
+      },
+      deleteSearch(){
+        this.key_word="" ;
+        // this.noMatch = false;
+        
+      }
+    },
+    filters:{
+      filterMatch(value){
+        let str = value;
+        let num = this.key_word.length;
+        // let pos = str.indexOf(this.key_word);
+        let strNew = str.slice(num);
+        return strNew;
+      }
     }
+  };
 </script>
 
 <style scoped>
-    @import "../../../static/theme/0/Search/search-form/index.css" ;
+  @import "../../../static/theme/1/Search/search-form/index.css";
+  @import "../../../static/theme/1/Search/search-hot/index.css" ;
     /*美团*/
     /*.search-form {*/
     /*    margin-top: .2rem;*/
