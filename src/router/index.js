@@ -62,14 +62,10 @@ const router = new Router({
           component: () => import('../views/shop/eleStore-seller.vue')
         }
       ]
-    }
+    },
   ]
 })
 
-<<<<<<< HEAD
-
-export default router;
-=======
 router.beforeEach((to, from, next) => {
   const isLogin = localStorage.ele_login ? true : false;
   if (to.path == "/phoneLogin") {
@@ -80,4 +76,3 @@ router.beforeEach((to, from, next) => {
   }
 });
 export default router;
->>>>>>> zjh
