@@ -21,7 +21,6 @@
       <button class="Login" :disabled="disabled" @click="phoneLogin">登录</button>
       <!-- </form> -->
       <a href="javascript:;" class="aboutus">关于我们</a>
-      <div @click="tuichu">退出登录</div>
     </div>
   </div>
 </template>
@@ -84,10 +83,6 @@ export default {
             code: err.response.data.msg
           };
         });
-    },
-    tuichu() {
-      localStorage.setItem("ele_login", false);
-      this.$router.push("/index");
     },
     virtical() {
       var time = 10;
