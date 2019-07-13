@@ -7,6 +7,7 @@
         <h1 :class="[change?'':'fa fa-map-marker']">西安市人民政府</h1>
         <i :class="[change?'fa fa-sort-desc':'fa fa-bell-o']"></i>
       </div>
+<<<<<<< HEAD
 
         <div :class="[SearchBar?'bottomSearch':'bottomSearchOne']" ref="s">
           <div class="whiteBar">
@@ -15,6 +16,16 @@
           </div>
         </div>
 
+=======
+      <div
+        :class="[SearchBar?'bottomSearch':'bottomSearchOne']"
+        ref="s"
+        @click="$router.push('/search')"
+      >
+        <span :class="[change?'fa fa-search':'fa fa-search']"></span>
+        <p>搜索饿了么商家，商品名称</p>
+      </div>
+>>>>>>> 14091010b54eca3641f84321eab5945b33f54f35
     </div>
     <!-- <button @click="changeclick">改变</button> -->
   </div>

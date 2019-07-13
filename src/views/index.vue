@@ -12,7 +12,7 @@ export default {
     return {
       tabbarData: [
         { title: "首页", icon: "home", path: "/home" },
-        { title: "换肤", icon: "file-text-o", path: "/test" },
+        { title: "发现", icon: "file-text-o", path: "/dstance" },
         { title: "订单", icon: "file-text-o", path: "/order" },
         { title: "我的", icon: "user", path: "/mine" }
       ]
