@@ -39,6 +39,16 @@ const router = new Router({
           component: () => import('../views/order.vue')
         },
         {
+          path: "/address",
+          name: "address",
+          component: () => import("../views/Address.vue")
+        },
+        {
+          path: "/city",
+          name: "city",
+          component: () => import("../views/city.vue")
+        },
+        {
           path: "/searchAddress",
           name: "searchAddress",
           component: () => import('../views/address/search-address.vue')
@@ -93,7 +103,7 @@ const router = new Router({
     {
       path: "/shoporder",
       name: "shoporder",
-      component: () => import('../views/order/shopOrder.vue')
+      component: () => import('../views/shopOrder.vue')
     }
   ]
 })

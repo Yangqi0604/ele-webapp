@@ -1,31 +1,18 @@
 <template>
   <div>
     <!-- 饿了么 -->
-    <div class="bigSearch">
-      <div class="topSearch">
-        <span :class="[change?'fa fa-map-marker':'fa fa-chevron-left']"></span>
-        <h1 :class="[change?'':'fa fa-map-marker']">西安市人民政府</h1>
-        <i :class="[change?'fa fa-sort-desc':'fa fa-bell-o']"></i>
+    <div class="header">
+      <div class="address_map" @click="$router.push({name: 'address',params: {city: city}})">
+        <i class="fa fa-map-marker"></i>
+        <span>{{address}}</span>
+        <i class="fa fa-sort-desc"></i>
       </div>
-<<<<<<< HEAD
-
-        <div :class="[SearchBar?'bottomSearch':'bottomSearchOne']" ref="s">
-          <div class="whiteBar">
-            <span :class="[change?'fa fa-search':'fa fa-search']"></span>
-            <p>搜索饿了么商家，商品名称</p>
-          </div>
-        </div>
-
-=======
-      <div
-        :class="[SearchBar?'bottomSearch':'bottomSearchOne']"
-        ref="s"
-        @click="$router.push('/search')"
-      >
-        <span :class="[change?'fa fa-search':'fa fa-search']"></span>
-        <p>搜索饿了么商家，商品名称</p>
+    </div>
+    <div class="search_wrap" :class="{'fixedview' :showFilter}">
+      <div class="shop_search" @click="$router.push('/search')">
+        <i class="fa fa-search"></i>
+        搜索饿了么商家 商家名称
       </div>
->>>>>>> 14091010b54eca3641f84321eab5945b33f54f35
     </div>
     <!-- <button @click="changeclick">改变</button> -->
   </div>
@@ -37,163 +24,150 @@ export default {
   data() {
     return {
       title: "",
-      SearchBar: false
+      SearchBar: false,
+      showFilter: false
     };
   },
   computed: {
-    change() {
-      return this.$store.state.flag;
-    }
-    // ...mapState(["change"])
-  },
-  mounted() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  methods: {
-    handleScroll() {
-      let scrollTop =
-        window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop;
-      let offsetTops = this.$refs.s.offsetTop;
-      if (scrollTop >offsetTops) {
-        this.SearchBar = true;
-      } else {
-        this.SearchBar = false;
-      }
+    address() {
+      return this.$store.getters.address;
     },
-    // changeclick() {
-    //   this.$store.commit("changeclick");
-    // }
-    ...mapMutations(["changeclick"])
+    city() {
+      return (
+        this.$store.getters.location.addressComponent.city ||
+        this.$store.getters.location.addressComponent.province
+      );
+    }
   }
+
+  // changeclick() {
+  //   this.$store.commit("changeclick");
+  // }
 };
 </script>
 
 <style scoped>
-.topSearch {
+.home {
   width: 100%;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  background: #0085ff;
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
 }
-.tp {
-  width: 100%;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  background: red;
+.header,
+.search_wrap {
+  background-color: #009eef;
+  padding: 10px 16px;
 }
-
-.topSearch i {
-  margin: 0px 5px;
-  font-size: 19px;
-  margin-top: -8px;
-  color: white;
-}
-
-.topSearch > h1 {
-  color: white;
+.header .address_map {
+  color: #fff;
   font-weight: bold;
 }
-
-.topSearch > span {
-  color: white;
-  margin-right: 0.5rem;
-  margin-left: 1rem;
+/* .headerA,
+.search_wrap {
+  background-color: red;
+  padding: 10px 16px;
 }
-
-.topSearch > select {
-  width: 1.2rem;
-  height: 1.2rem;
-  background: #0085ff;
-  color: white;
-  outline: none;
-  border: none;
+.headerA .address_map {
+  color: #fff;
+  font-weight: bold;
+} */
+.address_map i {
+  margin: 0 3px;
+  font-size: 18px;
 }
-.bottomSearch {
+.address_map span {
+  display: inline-block;
+  width: 80%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.search_wrap .shop_search {
+  /* margin-top: 10px; */
+  background-color: #fff;
+  padding: 10px 0;
+  border-radius: 4px;
+  text-align: center;
+  color: #aaa;
+}
+.search_wrap {
+  position: sticky;
+  top: 0px;
+  z-index: 999;
+  box-sizing: border-box;
+}
+/* #container {
+  height: 2000px;
+} */
+.swiper {
+  height: 100px;
+}
+.swiper img {
   width: 100%;
-  height: 3rem;
-  background: #0085ff;
-  position: fixed;
+  height: 100px;
+}
+.entries {
+  background: #fff;
+  height: 47.2vw;
+  text-align: center;
+  overflow: hidden;
+}
+.foodentry {
+  width: 20%;
+  float: left;
+  position: relative;
+  margin-top: 2.933333vw;
+}
+.foodentry .img_wrap {
+  position: relative;
+  display: inline-block;
+  width: 12vw;
+  height: 12vw;
+}
+.img_wrap img {
+  width: 100%;
+  height: 100%;
+}
+.foodentry span {
+  display: block;
+  color: #666;
+  font-size: 0.32rem;
+}
+/* 推荐商家 */
+.shoplist-title {
   display: flex;
-  top: 0;
+  align-items: flex;
+  justify-content: center;
+  height: 9.6vw;
+  line-height: 9.6vw;
+  font-size: 16px;
+  color: #333;
+  background: #fff;
+}
+.shoplist-title:after,
+.shoplist-title:before {
+  display: block;
+  content: "一";
+  width: 5.333333vw;
+  height: 0.266667vw;
+  color: #999;
+}
+.shoplist-title:before {
+  margin-right: 3.466667vw;
+}
+.shoplist-title:after {
+  margin-left: 3.466667vw;
+}
+
+.fixedview {
+  width: 100%;
+  position: fixed;
+  top: 0px;
   z-index: 999;
 }
-.bottomSearch >.whiteBar {
-  width: 90%;
-  height: 2.2rem;
-  line-height: 2.2rem;
-  text-align: center;
-  background: white;
-  color: #999;
-  padding-left: 1rem;
-}
-.bottomSearch >.whiteBar>p {
-  display: inline-block;
-  color: #999;
-  font-size: 1rem;
-}
-.bottomSearchOne {
-  width: 100%;
-  height: 3rem;
-  background: #0085ff;
-  display: flex;
-  justify-content: center;
-}
-.bottomSearchOne >.whiteBar {
-  width: 90%;
-  height: 2.2rem;
-  line-height: 2.2rem;
-  background: white;
-  color: #999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.bottomSearchOne >.whiteBar > span {
-  display: inline-block;
-  width: 1.2rem;
-  color: #999;
-  font-size: 1rem;
-}
 
-
-/*.home-adress-map {
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
+.mint-loadmore {
+  height: calc(100% - 95px);
+  overflow: auto;
 }
-
-.search {
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  margin-top: 0.5rem;
-  padding: 0 1rem;
-}
-
-.search span {
-  width: 0.5rem;
-  height: 100%;
-  font-size: 0.3rem;
-  line-height: 2rem;
-  padding-left: 1rem;
-  padding-right: 0.5rem;
-  background: #e4e4e4;
-  opacity: 0.5;
-  border-radius: 0.5rem 0 0 0.5rem;
-}
-
-.search a {
-  width: 100%;
-  height: 100%;
-  line-height: 2rem;
-  background: #e4e4e4;
-  opacity: 0.5;
-  border-radius: 0 0.5rem 0.5rem 0;
-} */
 </style>

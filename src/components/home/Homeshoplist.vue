@@ -1,220 +1,40 @@
 <template>
   <div>
-    <section class="index-container" @click="$router.push('/shop')">
-      <div class="index-shopInfo">
-        <!-- 左侧图片 -->
-        <div class="logo_container">
-          <img
-            src="https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/"
-            alt
-          />
-        </div>
-        <!-- 右侧内容 -->
-        <!-- 第一行，品牌 -->
-        <div class="index_main">
-          <div class="index_shopname">
-            <i>品牌</i>
-            <span>顶顶香</span>
-          </div>
-          <!-- 第二行，星级 -->
-          <div class="index-rateWrap">
-            <div>
-              <!-- <starLevel :rating="restaurant.rating"/> -->
-              <!-- <span class="rate">{{restaurant.rating}}</span> -->
-              <span>月售1168单</span>
-            </div>
-            <div class="delivery">
-              <span class="icon-hollow"></span>
-            </div>
-          </div>
-          <!-- 第三行，配送 -->
-          <div class="index-moneylimit">
-            <div>
-              <span>￥20起送</span>
-              |
-              <span>配送费￥1.1</span>
-            </div>
-            <div class="index-distanceWrap">
-              <span>2.73km</span>
-              |
-              <span>43分钟</span>
-            </div>
-          </div>
-          <!-- 第四行，口碑 -->
-          <div class="index-status">
-            <div>
-              <span>川湘菜</span>
-            </div>
-            <div>
-              <span>品质联盟</span>
-              <span>
-                <img
-                  src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png?imageMogr/format/webp/thumbnail/!20x20r/gravity/Center/crop/20x20/"
-                  alt
-                />
-                <span>口碑人气好店</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     <section class="index-container">
       <div class="index-shopInfo">
         <!-- 左侧图片 -->
         <div class="logo_container">
-          <img
-            src="https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/"
-            alt
-          />
+          <img :src="restaurant.image_path" alt />
         </div>
         <!-- 右侧内容 -->
         <!-- 第一行，品牌 -->
-        <div class="index_main">
+        <div class="index_main" @click="$router.push('/shop')">
           <div class="index_shopname">
-            <i>品牌</i>
-            <span>顶顶香</span>
+            <i v-if="restaurant.is_premium">品牌</i>
+            <span>{{restaurant.name}}</span>
           </div>
           <!-- 第二行，星级 -->
           <div class="index-rateWrap">
             <div>
               <!-- <starLevel :rating="restaurant.rating"/> -->
               <!-- <span class="rate">{{restaurant.rating}}</span> -->
-              <span>月售1168单</span>
+              <span>月售{{restaurant.recent_order_num}}</span>
             </div>
-            <div class="delivery">
-              <span class="icon-hollow"></span>
-            </div>
-          </div>
-          <!-- 第三行，配送 -->
-          <div class="index-moneylimit">
-            <div>
-              <span>￥20起送</span>
-              |
-              <span>配送费￥1.1</span>
-            </div>
-            <div class="index-distanceWrap">
-              <span>2.73km</span>
-              |
-              <span>43分钟</span>
-            </div>
-          </div>
-          <!-- 第四行，口碑 -->
-          <div class="index-status">
-            <div>
-              <span>川湘菜</span>
-            </div>
-            <div>
-              <span>品质联盟</span>
-              <span>
-                <img
-                  src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png?imageMogr/format/webp/thumbnail/!20x20r/gravity/Center/crop/20x20/"
-                  alt
-                />
-                <span>口碑人气好店</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="index-container">
-      <div class="index-shopInfo">
-        <!-- 左侧图片 -->
-        <div class="logo_container">
-          <img
-            src="https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/"
-            alt
-          />
-        </div>
-        <!-- 右侧内容 -->
-        <!-- 第一行，品牌 -->
-        <div class="index_main">
-          <div class="index_shopname">
-            <i>品牌</i>
-            <span>顶顶香</span>
-          </div>
-          <!-- 第二行，星级 -->
-          <div class="index-rateWrap">
-            <div>
-              <!-- <starLevel :rating="restaurant.rating"/> -->
-              <!-- <span class="rate">{{restaurant.rating}}</span> -->
-              <span>月售1168单</span>
-            </div>
-            <div class="delivery">
-              <span class="icon-hollow"></span>
+            <div class="delivery" v-if="restaurant.delivery_mode">
+              <span class="icon-hollow">{{restaurant.delivery_mode.text}}</span>
             </div>
           </div>
           <!-- 第三行，配送 -->
           <div class="index-moneylimit">
             <div>
-              <span>￥20起送</span>
+              <span>￥{{restaurant.float_minimum_order_amount}}起送</span>
               |
-              <span>配送费￥1.1</span>
+              <span>配送费￥{{restaurant.float_delivery_fee}}</span>
             </div>
             <div class="index-distanceWrap">
-              <span>2.73km</span>
+              <span>{{(restaurant.distance/1000).toFixed(2)}}km</span>
               |
-              <span>43分钟</span>
-            </div>
-          </div>
-          <!-- 第四行，口碑 -->
-          <div class="index-status">
-            <div>
-              <span>川湘菜</span>
-            </div>
-            <div>
-              <span>品质联盟</span>
-              <span>
-                <img
-                  src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png?imageMogr/format/webp/thumbnail/!20x20r/gravity/Center/crop/20x20/"
-                  alt
-                />
-                <span>口碑人气好店</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="index-container">
-      <div class="index-shopInfo">
-        <!-- 左侧图片 -->
-        <div class="logo_container">
-          <img
-            src="https://fuss10.elemecdn.com/7/51/214c1949dc059732ac12ea7d9ce8bpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/"
-            alt
-          />
-        </div>
-        <!-- 右侧内容 -->
-        <!-- 第一行，品牌 -->
-        <div class="index_main">
-          <div class="index_shopname">
-            <i>品牌</i>
-            <span>顶顶香</span>
-          </div>
-          <!-- 第二行，星级 -->
-          <div class="index-rateWrap">
-            <div>
-              <!-- <starLevel :rating="restaurant.rating"/> -->
-              <!-- <span class="rate">{{restaurant.rating}}</span> -->
-              <span>月售1168单</span>
-            </div>
-            <div class="delivery">
-              <span class="icon-hollow"></span>
-            </div>
-          </div>
-          <!-- 第三行，配送 -->
-          <div class="index-moneylimit">
-            <div>
-              <span>￥20起送</span>
-              |
-              <span>配送费￥1.1</span>
-            </div>
-            <div class="index-distanceWrap">
-              <span>2.73km</span>
-              |
-              <span>43分钟</span>
+              <span>{{restaurant.order_lead_time}}分钟</span>
             </div>
           </div>
           <!-- 第四行，口碑 -->
@@ -242,20 +62,8 @@
 <script>
 export default {
   name: "Homeshoplist",
-  data() {
-    return {};
-  },
-  created() {
-    this.getData;
-  },
-  methods: {
-    getData() {
-      this.$axios("/api/profile/shopping").then(res => {
-        // console.log(res.data);
-        this.swipeImgs = res.data.swipeImgs;
-        this.entries = res.data.entries;
-      });
-    }
+  props: {
+    restaurant: {}
   }
 };
 </script>
@@ -357,5 +165,9 @@ export default {
   width: 0.666667rem;
   height: 0.66667rem;
   color: #e8470b;
+}
+.mint-loadmore {
+  height: calc(100% - 95px);
+  overflow: auto;
 }
 </style>
