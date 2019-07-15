@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Engorge1 from "../components/engorge/engorge1";
+import Engorge1 from "../components/engorge/engorge-one";
 import Engorge2 from "../components/engorge/quality-main";
 export default {
   name: "quality",

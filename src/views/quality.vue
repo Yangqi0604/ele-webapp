@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import Quality from '../components/quality/quality1'
+    import Quality from '../components/engorge/engorge-one'
     import QualityMain from '../components/quality/quality-main'
     export default {
         name: "quality" ,
