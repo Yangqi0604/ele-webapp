@@ -1,6 +1,6 @@
 <template>
   <!-- 分类按钮 -->
-  <div class="entries">
+  <div>
     <mt-swipe :auto="0" class="entries">
       <mt-swipe-item v-for="(entry,index) in entries" :key="index" class="item-overflow">
         <div class="itemfood" v-for="(item,i) in entry" :key="i">
@@ -18,6 +18,29 @@
 export default {
   props: {
     entries: Array
+  },
+  data() {
+    return {
+      url: [
+        "/ele-food",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    };
   }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="elmHeader">
-        <div class="redPacket">
+        <router-link tag="div" to="/redPacket" class="redPacket">
             <div class="red">
                 <h1>1</h1>
                 <span>个</span>
@@ -8,8 +8,8 @@
             <div class="packet">
                 <span>红包</span>
             </div>
-        </div>
-        <div class="redPacket">
+        </router-link>
+        <router-link tag="div" to="/gold" class="redPacket">
             <div class="green">
                 <h1>0</h1>
                 <span>个</span>
@@ -17,7 +17,7 @@
             <div class="packet">
                 <span>金币</span>
             </div>
-        </div>
+        </router-link>
     </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="address">
-    <Header title="选择收货地址" />
+    <Header :isLeft="true" title="选择收货地址" />
     <div class="city_search">
       <div class="search">
         <span class="city" @click="$router.push('/city')">
@@ -20,7 +20,7 @@
         </li>
       </ul>
     </div>
-    <header v-if="historytitle" class="pois_search_history">搜索历史</header>
+    <!-- <header v-if="historytitle" class="pois_search_history">搜索历史</header>
     <ul class="getpois_ul">
       <li v-for="(items,index) in areaList" :key="index" @click="nextpage(index, geohash)">
         <h4 class="pois_name ellipsis">{{items.name}}</h4>
@@ -28,7 +28,7 @@
       </li>
     </ul>
     <footer v-if="historytitle&&areaList.length" class="clear_all_history" @click="clearAll">清空所有</footer>
-    <div class="search_none_place" v-if="placeNone">很抱歉！无搜索结果</div>
+    <div class="search_none_place" v-if="placeNone">很抱歉！无搜索结果</div>-->
   </div>
 </template>
 

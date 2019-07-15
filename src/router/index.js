@@ -48,16 +48,6 @@ const router = new Router({
           name: "city",
           component: () => import("../views/city.vue")
         },
-        {
-          path: "/searchAddress",
-          name: "searchAddress",
-          component: () => import('../views/address/search-address.vue')
-        },
-        {
-          path: "/addAddress",
-          name: "addAddress",
-          component: () => import('../views/address/add-address.vue')
-        }
       ]
     },
     {
@@ -101,20 +91,95 @@ const router = new Router({
       ]
     },
     {
-      path: "/shoporder",
-      name: "shoporder",
-      component: () => import('../views/shopOrder.vue')
+      path: '/myAddress',
+      name: 'myAddress',
+      component: () => import('../views/Orders/MyAddress.vue')
+    },
+    {
+      path: '/addAddress',
+      name: 'addAddress',
+      component: () => import('../views/Orders/AddAddress.vue')
+    },
+    {
+      path: '/settlement',
+      name: 'settlement',
+      component: () => import('../views/Orders/Settlement.vue')
+    },
+    {
+      path: '/remark',
+      name: 'remark',
+      component: () => import('../views/Orders/Remark.vue')
+    },
+    {
+      path: '/pay',
+      name: 'pay',
+      component: () => import('../views/Orders/Pay.vue')
+    },
+    {
+      path: '/orderInfo',
+      name: 'orderInfo',
+      component: () => import('../views/Orders/OrderInfo.vue')
+    },
+    {
+      path: '/logOut',
+      name: 'logOut',
+      component: () => import('../views/mine/log-out.vue')
+    },
+    {
+      path: '/redPacket',
+      name: 'redPacket',
+      component: () => import('../views/mine/red-packet.vue')
+    },
+    {
+      path: '/gold',
+      name: 'gold',
+      component: () => import('../views/mine/gold.vue')
+    },
+    {
+      path: '/customerService',
+      name: 'customerService',
+      component: () => import('../views/mine/customerService.vue')
+    },
+    {
+      path: '/ele-breakfast',
+      name: 'ele-breakfast',
+      component: () => import('../views/superMarket/ele-breakfast.vue')
+    },
+    {
+      path: '/ele-food',
+      name: 'ele-food',
+      component: () => import('../views/superMarket/ele-food.vue')
+    },
+    {
+      path: '/goldshop',
+      name: 'goldshop',
+      component: () => import('../views/goldShop.vue')
+    },
+    {
+      path: '/drugstore',
+      name: 'drugstore',
+      component: () => import('../views/ele-drugstore.vue')
+    },
+    {
+      path: '/engorgeOne',
+      name: 'engorgeOne',
+      component: () => import('../views/engorgeOne.vue')
+    },
+    {
+      path: '/quality',
+      name: 'quality',
+      component: () => import('../views/quality.vue')
     }
   ]
 })
 
-// router.beforeEach((to, from, next) => {
-//   const isLogin = localStorage.ele_login ? true : false;
-//   if (to.path == "/phoneLogin") {
-//     next();
-//   } else {
-//     //是否登录状态下
-//     isLogin ? next() : next("/phoneLogin");
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  const isLogin = localStorage.ele_login ? true : false;
+  if (to.path == "/phoneLogin") {
+    next();
+  } else {
+    //是否登录状态下
+    isLogin ? next() : next("/phoneLogin");
+  }
+});
 export default router;

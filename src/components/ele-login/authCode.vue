@@ -3,9 +3,8 @@
     <div class="title">请填写图形验证码</div>
     <div class="entrycode">
       <input type="text" v-model="picauthcode" @input="isCode" />
-      <div @click="refreshCode">
-        <s-identify class="canv" :identifyCode="identifyCode"></s-identify>
-      </div>
+      <s-identify class="canv" :identifyCode="identifyCode"></s-identify>
+      <p @click="refreshCode">看不清？换一张</p>
     </div>
     <div class="anniu">
       <div class="quxiao" @click="quxiao">取消</div>
@@ -28,7 +27,7 @@ export default {
       identifyCode: "",
       picauthcode: "",
       disabled: true,
-      color: "",
+      color: ""
     };
   },
   mounted() {
@@ -39,7 +38,7 @@ export default {
     quxiao() {
       this.shuju.codebox = !this.shuju.codebox;
       this.identifyCode = "";
-        this.makeCode(this.identifyCodes, 4);
+      this.makeCode(this.identifyCodes, 4);
     },
     isCode() {
       if (this.picauthcode == this.identifyCode) {
@@ -64,19 +63,19 @@ export default {
           .then(res => {
             console.log(res);
           });
-          // this.$emit("chuanzhi",)
+        // this.$emit("chuanzhi",)
       }
     },
     virtical() {
-      var time = 10;
+      var time = 30;
       var timer = setInterval(() => {
         if (time == 0) {
           this.shuju.changecode = "获取验证码";
           this.shuju.disabled = false;
-          this.color = "color:#0089dc";
+          this.shuju.color = "color:#0089dc";
           clearInterval(timer);
         } else {
-          this.shuju.changecode = time + "秒后重试";
+          this.shuju.changecode = "已发送" + "(" + time + ")";
           this.shuju.disabled = true;
           this.shuju.color = "color:#ddd";
           time--;
@@ -112,7 +111,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   background-color: rgba(245, 245, 245, 0.9);
-  z-index: 5;;
+  z-index: 5;
 }
 .auth .title {
   padding-top: 1.25rem;
@@ -137,6 +136,12 @@ export default {
   border: none;
   font-size: 1.875rem;
   border-radius: 0.3125rem;
+}
+.entrycode > p {
+  position: absolute;
+  right: 0.375rem;
+  bottom: -1.125rem;
+  color: #999;
 }
 .canv {
   height: 3.125rem;

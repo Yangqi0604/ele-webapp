@@ -107,16 +107,8 @@ section {
   display: block;
 }
 
-html,
-body {
-  height: 100%;
-}
-html,body{
-    height: 100%;
-}
 body {
   line-height: 1;
-
 }
 
 ol,
@@ -140,7 +132,4 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-#app{
-  height: 100%;
 }

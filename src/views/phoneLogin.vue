@@ -1,11 +1,12 @@
 <template>
   <div class="loginbox">
     <div class="phoneLogin">
+      <!-- 饿了么图片  -->
       <div class="pic">
         <img src="http://shadow.elemecdn.com/faas/h5/static/logo.ba876fd.png" alt="饿不饿都上饿了么" />
       </div>
+      <!-- 登录框 -->
       <div class="login">
-        <!-- <form class="loginform"> -->
         <section class="phonesec">
           <input
             type="tel"
@@ -31,13 +32,14 @@
           >《用户服务协议》</a>
         </section>
         <button class="Login" :disabled="shuju.disabled" @click="phoneLogin">登录</button>
-        <!-- </form> -->
         <a href="javascript:;" class="aboutus">关于我们</a>
         <!-- 验证码组件在这里 -->
         <auth-code class="code" :shuju="shuju"></auth-code>
       </div>
     </div>
+    <!-- 蒙层 -->
     <div class="mengceng" v-if="shuju.codebox"></div>
+    <!-- 验证码错误提示框 -->
     <div class="tishi" v-if="shuju.tishi">{{shuju.errors}}</div>
   </div>
 </template>
@@ -52,11 +54,15 @@ export default {
   },
   data() {
     return {
-      phonenum: "",
-      disabled: true,
-      color: "color:#ddd",
-      changecode: "获取验证码",
-      authcode: ""
+      shuju: {
+        phonenum: "",
+        disabled: true,
+        color: "color:#ddd",
+        changecode: "获取验证码",
+        authcode: "",
+        codebox: false,
+        errors: ""
+      }
     };
   },
   methods: {
@@ -72,25 +78,13 @@ export default {
     },
     // 获取验证码
     authCode() {
-      if (this.change) {
-        this.virtical();
-        // 发送网络请求
-        this.$axios
-          .post("/posts/sms_send", {
-            tpl_id: "166104",
-            key: "22027c54b3df0e087fd1d450b81c24cd",
-            phone: this.phonenum
-          })
-          .then(res => {
-            console.log(res);
-          });
-      }
+      this.shuju.codebox = !this.shuju.codebox;
     },
     phoneLogin() {
       this.$axios
         .post("/posts/sms_back", {
-          phone: this.phonenum,
-          code: this.authcode
+          phone: this.shuju.phonenum,
+          code: this.shuju.authcode
         })
         .then(res => {
           console.log(res);
@@ -101,26 +95,8 @@ export default {
         })
         // 失败的话
         .catch(err => {
-          this.errors = {
-            code: err.response.data.msg
-          };
+          this.errors = "验证码错误";
         });
-    },
-    virtical() {
-      var time = 10;
-      var timer = setInterval(() => {
-        if (time == 0) {
-          this.changecode = "获取验证码";
-          this.disabled = false;
-          this.color = "color:#0089dc";
-          clearInterval(timer);
-        } else {
-          this.changecode = time + "秒后重试";
-          this.disabled = true;
-          this.color = "color:#ddd";
-          time--;
-        }
-      }, 1000);
     }
   }
 };
@@ -131,6 +107,7 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
+  background-color: #fff;
 }
 .phoneLogin {
   width: 80%;

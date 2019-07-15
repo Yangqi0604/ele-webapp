@@ -1,6 +1,6 @@
 <template>
     <div class="elmNav">
-        <div class="myNav">
+        <router-link tag="div" to="/logOut" class="myNav">
             <div class="navRight">
                 <img src="https://fuss10.elemecdn.com/2/7c/43ec114eae35cdcee08de1d885c99jpeg.jpeg?imageMogr/format/webp/thumbnail/!120x120r/gravity/Center/crop/120x120/" alt="">
                 <div class="navCentre">
@@ -11,7 +11,7 @@
             <div class="navLeft">
                 <span> > </span>
             </div>
-        </div>
+        </router-link>
     </div>
 </template>
 

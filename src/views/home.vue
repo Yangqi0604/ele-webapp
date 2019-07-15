@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <!-- 地址与搜索 -->
+    <!-- v-if="flag" :class="flag ? 'header' :'headerA'" -->
     <div class="header">
       <div class="address_map" @click="$router.push({name: 'address',params: {city: city}})">
         <i class="fa fa-map-marker"></i>
@@ -14,13 +14,19 @@
         搜索饿了么商家 商家名称
       </div>
     </div>
-    <!-- 一堆子图标 -->
-    <item-icon :entries="entries" />
+    <!-- 分类按钮 -->
+    <div id="entries">
+      <ItemIcon :entries="entries" />
+    </div>
     <!-- 轮播图 -->
-    <swiper-content :swipeImgs="swipeImgs" />
-    <!-- 导航条 -->
-    <nav-bar :filterdata="filterdata" @searchFixed="showFilterview" @updata="updata" />
-    <!-- 商铺列表 -->
+    <div id="container">
+      <Swiper :swipeImgs="swipeImgs" />
+    </div>
+    <!-- 推荐商家 -->
+    <div class="shoplist-title">推荐商家</div>
+    <!-- 导航 -->
+    <filterView :filterdata="filterdata" @searchFixed="showFilterview" @updata="updata"></filterView>
+    <!-- 商家信息 -->
     <div class="shopList">
       <mt-loadmore
         :top-method="loadData"
@@ -30,44 +36,29 @@
         :bottomPullText="bottomPullText"
         ref="loadmore"
       >
-        <homeShop-list
-          v-for="(item,index) in restaurants"
-          :key="index"
-          :restaurant="item.restaurant"
-        />
+        <homeShop v-for="(item,index) in restaurants" :key="index" :restaurant="item.restaurant" />
       </mt-loadmore>
     </div>
   </div>
 </template>
 
-
 <script>
 import { Swipe, SwipeItem, Loadmore } from "mint-ui";
-import AddSearch from "../components/home/AddSearch";
+import Swiper from "../components/public/Swiper";
 import ItemIcon from "../components/home/Itemicon";
-import Navbar from "../components/home/Navbar";
-import HomeShopList from "../components/home//Homeshoplist";
-import SwiperContent from "../components/public/Swiper";
+import filterView from "../components/home/filterView";
+import homeShop from "../components/home/Homeshoplist";
 export default {
-  data() {
-    return {
-      swipeImgs: [],
-      entries: [],
-      page: 1,
-      size: 5,
-      restaurants: [],
-      allLoaded: false,
-      bottomPullText: "上拉加载更多",
-      title: "",
-      SearchBar: false,
-      showFilter: false,
-      data: null,
-      filterdata: "",
-      flag: false
-    };
+  name: "home",
+  components: {
+    filterView,
+    homeShop,
+    Swiper,
+    ItemIcon
   },
   computed: {
     address() {
+      //在vuex中获取管理地址的最新状态
       return this.$store.getters.address;
     },
     city() {
@@ -77,6 +68,21 @@ export default {
       );
     }
   },
+  data() {
+    return {
+      swipeImgs: [],
+      entries: [],
+      filterdata: "",
+      showFilter: false,
+      page: 1,
+      size: 5,
+      restaurants: [], //存放所有商家
+      allLoaded: false,
+      bottomPullText: "上拉加载更多",
+      data: null,
+      flag: false
+    };
+  },
   created() {
     this.getData();
   },
@@ -84,8 +90,8 @@ export default {
     getData() {
       this.$axios("/profile/shopping").then(res => {
         // console.log(res.data);
-        this.entries = res.data.entries;
         this.swipeImgs = res.data.swipeImgs;
+        this.entries = res.data.entries;
       });
       this.$axios("/profile/filter").then(res => {
         console.log(res.data);
@@ -96,7 +102,7 @@ export default {
     },
     showFilterview(isShow) {
       this.showFilter = isShow;
-      // console.log(this.showFilter);
+      console.log(this.showFilter);
     },
     updata(condation) {
       // console.log(condation);
@@ -104,7 +110,6 @@ export default {
       this.loadData();
     },
     loadData() {
-      //上拉加载数据
       this.page = 1;
       this.allLoaded = false;
       this.bottomPullText = "上拉加载更多";
@@ -118,14 +123,13 @@ export default {
         });
     },
     loadMore() {
-      //下拉刷新数据
       if (!this.allLoaded) {
         this.page++;
         //拉取商家信息
         this.$axios
           .post(`/profile/restaurants/${this.page}/${this.size}`, this.data)
           .then(res => {
-            //数据加载之后重新渲染页面
+            // 加载完之后重新渲染
             this.$refs.loadmore.onBottomLoaded();
             if (res.data.length > 0) {
               res.data.forEach(item => {
@@ -144,16 +148,12 @@ export default {
           });
       }
     }
-  },
-  components: {
-    "add-search": AddSearch,
-    "item-icon": ItemIcon,
-    "nav-bar": Navbar,
-    "homeShop-list": HomeShopList,
-    "swiper-content": SwiperContent
   }
 };
 </script>
+
+
+
 <style scoped>
 .home {
   width: 100%;
@@ -170,15 +170,6 @@ export default {
   color: #fff;
   font-weight: bold;
 }
-/* .headerA,
-.search_wrap {
-  background-color: red;
-  padding: 10px 16px;
-}
-.headerA .address_map {
-  color: #fff;
-  font-weight: bold;
-} */
 .address_map i {
   margin: 0 3px;
   font-size: 18px;
@@ -204,9 +195,6 @@ export default {
   z-index: 999;
   box-sizing: border-box;
 }
-/* #container {
-  height: 2000px;
-} */
 .swiper {
   height: 100px;
 }

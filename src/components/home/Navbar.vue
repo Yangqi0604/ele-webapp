@@ -3,9 +3,9 @@
     <div id="min">
       <div class="min-top">
         <div class="borders"></div>
-        <div class="min-top-two">
+        <!-- <div class="min-top-two">
           <span>推荐商家</span>
-        </div>
+        </div>-->
         <div class="borders"></div>
       </div>
       <div class="min-bottom">

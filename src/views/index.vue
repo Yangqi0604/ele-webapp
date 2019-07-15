@@ -24,5 +24,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.index {
+  width: 100%;
+  height: calc(100% - 45px);
+}
 </style>
