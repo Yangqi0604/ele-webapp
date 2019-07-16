@@ -16,8 +16,8 @@
           <!-- 第二行，星级 -->
           <div class="index-rateWrap">
             <div>
-              <!-- <starLevel :rating="restaurant.rating"/> -->
-              <!-- <span class="rate">{{restaurant.rating}}</span> -->
+              <starLevel :rating="restaurant.rating" />
+              <span class="rate">{{restaurant.rating}}</span>
               <span>月售{{restaurant.recent_order_num}}</span>
             </div>
             <div class="delivery" v-if="restaurant.delivery_mode">
@@ -60,10 +60,14 @@
 </template>
 
 <script>
+import starLevel from "../public/starLevel";
 export default {
   name: "Homeshoplist",
   props: {
     restaurant: {}
+  },
+  components: {
+    starLevel
   }
 };
 </script>

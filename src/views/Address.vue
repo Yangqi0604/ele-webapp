@@ -1,6 +1,6 @@
 <template>
   <div class="address">
-    <Header :isLeft="true" title="选择收货地址" />
+    <Header title="选择收货地址" :is-left="true" />
     <div class="city_search">
       <div class="search">
         <span class="city" @click="$router.push('/city')">
@@ -20,22 +20,12 @@
         </li>
       </ul>
     </div>
-    <!-- <header v-if="historytitle" class="pois_search_history">搜索历史</header>
-    <ul class="getpois_ul">
-      <li v-for="(items,index) in areaList" :key="index" @click="nextpage(index, geohash)">
-        <h4 class="pois_name ellipsis">{{items.name}}</h4>
-        <p class="pois_address ellipsis">{{items.district}}{{items.address}}</p>
-      </li>
-    </ul>
-    <footer v-if="historytitle&&areaList.length" class="clear_all_history" @click="clearAll">清空所有</footer>
-    <div class="search_none_place" v-if="placeNone">很抱歉！无搜索结果</div>-->
   </div>
 </template>
 
 <script>
 import Header from "../components/public/Header";
 import Location from "../components/city/location";
-import { getStore, setStore, removeStore } from "../config/mUtils";
 export default {
   name: "Address",
   components: {
@@ -46,10 +36,7 @@ export default {
     return {
       city: "", //当前的城市；
       search_val: "",
-      areaList: "", //搜索城市列表
-      placeHistory: [], //历史搜索记录
-      historytitle: true,
-      placeNone: false
+      areaList: ""
     };
   },
   watch: {
@@ -74,44 +61,7 @@ export default {
           console.log(result);
           self.areaList = result.tips;
         });
-        this.initData();
       });
-    },
-    initData() {
-      //获取搜索历史记录
-      if (getStore("placeHistory")) {
-        this.areaList = JSON.parse(getStore("placeHistory"));
-      } else {
-        this.areaList = [];
-      }
-    },
-    /**
-     * 点击搜索结果进入下一页面时进行判断是否已经有一样的历史记录
-     * 如果没有则新增，如果有则不做重复储存，判断完成后进入下一页
-     */
-    nextpage(index, geohash) {
-      let history = getStore("placeHistory");
-      let choosePlace = this.areaList[index];
-      if (history) {
-        let checkrepeat = false;
-        this.placeHistory = JSON.parse(history);
-        this.placeHistory.forEach(item => {
-          if (item.geohash == geohash) {
-            checkrepeat = true;
-          }
-        });
-        if (!checkrepeat) {
-          this.placeHistory.push(choosePlace);
-        }
-      } else {
-        this.placeHistory.push(choosePlace);
-      }
-      setStore("placeHistory", this.placeHistory);
-      this.$router.push({ path: "/msite", query: { geohash } });
-    },
-    clearAll() {
-      removeStore("placeHistory");
-      this.initData();
     },
     selectAddress(items) {
       if (items) {
@@ -178,42 +128,19 @@ export default {
   outline: none;
   border: none;
 }
-.pois_search_history {
-  border-top: 1px solid #e4e4e4;
-  border-bottom: 1px solid #e4e4e4;
-  padding-left: 0.5rem;
-  /* @include font(0.475rem, 0.8rem); */
+
+.area {
+  margin-top: 16px;
+  background: #fff;
 }
-.getpois_ul {
-  background-color: #fff;
-  border-top: 1px solid #e4e4e4;
+.area li {
+  border-bottom: 1px solid #eee;
+  padding: 8px 16px;
+  color: #aaa;
 }
-.pois_address {
-  width: 90%;
-  margin: 0 auto 0.55rem;
-  /* @include sc(0.45rem, #999); */
-}
-.getpois_ul > li {
-  margin: 0 auto;
-  padding-top: 0.65rem;
-  border-bottom: 1px solid #e4e4e4;
-}
-.pois_name {
-  margin: 0 auto 0.35rem;
-  width: 90%;
-  /* @include sc(0.65rem, #333); */
-}
-.search_none_place {
-  margin: 0 auto;
-  /* @include font(0.65rem, 1.75rem); */
+.area li h4 {
+  font-weight: bold;
   color: #333;
-  background-color: #fff;
-  text-indent: 0.5rem;
-}
-.clear_all_history {
-  /* @include sc(0.7rem, #666); */
-  text-align: center;
-  line-height: 2rem;
-  background-color: #fff;
+  margin-bottom: 5px;
 }
 </style>
