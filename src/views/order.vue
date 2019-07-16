@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     getData() {
-      this.$axios(`/user/orders/${localStorage.ele_login}`).then(res => {
+      this.$axios(`/api/user/orders/${localStorage.ele_login}`).then(res => {
         console.log(res.data);
         this.orderlist = res.data.orderlist;
       });

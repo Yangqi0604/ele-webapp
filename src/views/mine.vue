@@ -33,7 +33,7 @@ export default {
     getData() {
       const user_id = localStorage.ele_login;
       console.log(user_id);
-      this.$axios(`/user/user_info/${user_id}`).then(res => {
+      this.$axios(`/api/user/user_info/${user_id}`).then(res => {
         console.log(res.data);
       });
     }

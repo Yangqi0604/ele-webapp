@@ -88,12 +88,12 @@ export default {
   },
   methods: {
     getData() {
-      this.$axios("/profile/shopping").then(res => {
+      this.$axios("/api/profile/shopping").then(res => {
         // console.log(res.data);
         this.swipeImgs = res.data.swipeImgs;
         this.entries = res.data.entries;
       });
-      this.$axios("/profile/filter").then(res => {
+      this.$axios("/api/profile/filter").then(res => {
         console.log(res.data);
         this.filterdata = res.data;
       });
@@ -115,7 +115,7 @@ export default {
       this.bottomPullText = "上拉加载更多";
       //拉取商家信息
       this.$axios
-        .post(`/profile/restaurants/${this.page}/${this.size}`, this.data)
+        .post(`/api/profile/restaurants/${this.page}/${this.size}`, this.data)
         .then(res => {
           // console.log(res.data);
           this.$refs.loadmore.onTopLoaded();
@@ -127,7 +127,7 @@ export default {
         this.page++;
         //拉取商家信息
         this.$axios
-          .post(`/profile/restaurants/${this.page}/${this.size}`, this.data)
+          .post(`/api/profile/restaurants/${this.page}/${this.size}`, this.data)
           .then(res => {
             // 加载完之后重新渲染
             this.$refs.loadmore.onBottomLoaded();

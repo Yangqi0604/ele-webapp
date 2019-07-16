@@ -82,7 +82,7 @@ export default {
     },
     phoneLogin() {
       this.$axios
-        .post("/posts/sms_back", {
+        .post("/api/posts/sms_back", {
           phone: this.shuju.phonenum,
           code: this.shuju.authcode
         })

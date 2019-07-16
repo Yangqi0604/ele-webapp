@@ -2,7 +2,7 @@
   <header class="navbar">
     <div class="nav-wrap-left">
       <a href>
-        <i class="fa fa-angle-left"></i>
+        <i class="fa fa-angle-left" @click="$router.push('/')"></i>
       </a>
     </div>
     <div class="nav-header h1"></div>
