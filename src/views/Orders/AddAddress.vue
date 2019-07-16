@@ -107,7 +107,10 @@ export default {
     },
     addAddress() {
       this.$axios
-        .post(`/user/add_address/${localStorage.ele_login}`, this.addressInfo)
+        .post(
+          `/api/user/add_address/${localStorage.ele_login}`,
+          this.addressInfo
+        )
         .then(res => {
           if (!this.$store.getters.userInfo) {
             this.$store.dispatch("setUserInfo", this.addressInfo);
@@ -119,7 +122,7 @@ export default {
     editAddress() {
       this.$axios
         .post(
-          `/user/edit_address/${localStorage.ele_login}/${this.addressInfo._id}`,
+          `/api/user/edit_address/${localStorage.ele_login}/${this.addressInfo._id}`,
           this.addressInfo
         )
         .then(res => {

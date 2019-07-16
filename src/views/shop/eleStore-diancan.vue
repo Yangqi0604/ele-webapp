@@ -113,7 +113,7 @@ export default {
   },
   methods: {
     getData() {
-      this.$axios("/profile/batch_shop").then(res => {
+      this.$axios("/api/profile/batch_shop").then(res => {
         // console.log(res.data);
         res.data.recommend.forEach(recommend => {
           recommend.items.forEach(item => {

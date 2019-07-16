@@ -55,9 +55,9 @@ export default {
         this.virtical();
         // 发送网络请求
         this.$axios
-          .post("/posts/sms_send", {
-            tpl_id: "166104",
-            key: "22027c54b3df0e087fd1d450b81c24cd",
+          .post("/api/posts/sms_send", {
+            tpl_id: "173162",
+            key: "52506adc29164e805a164b6d72fdf806",
             phone: this.shuju.phonenum
           })
           .then(res => {

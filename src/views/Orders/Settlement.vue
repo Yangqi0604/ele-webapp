@@ -114,7 +114,7 @@ export default {
       });
     },
     getData() {
-      this.$axios(`/user/user_info/${localStorage.ele_login}`).then(res => {
+      this.$axios(`/api/user/user_info/${localStorage.ele_login}`).then(res => {
         // console.log(res.data);
         if (res.data.myAddress.length > 0) {
           this.haveAddress = true;

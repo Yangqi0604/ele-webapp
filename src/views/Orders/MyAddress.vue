@@ -67,7 +67,7 @@ export default {
       });
     },
     getData() {
-      this.$axios(`/user/user_info/${localStorage.ele_login}`).then(res => {
+      this.$axios(`/api/user/user_info/${localStorage.ele_login}`).then(res => {
         // console.log(res.data);
         this.allAddress = res.data.myAddress;
       });
@@ -83,7 +83,7 @@ export default {
     },
     handleDelete(address, index) {
       this.$axios
-        .delete(`/user/address/${localStorage.ele_login}/${address._id}`)
+        .delete(`/api/user/address/${localStorage.ele_login}/${address._id}`)
         .then(res => {
           this.allAddress.splice(index, 1);
         });

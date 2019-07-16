@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     getcityInfo() {
-      this.$axios("/posts/cities")
+      this.$axios("/api/posts/cities")
         .then(res => {
           // console.log(res.data);
           this.cityInfo = res.data;

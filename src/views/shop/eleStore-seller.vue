@@ -3,10 +3,7 @@
     <div class="one">
       <div class="story">
         <div class="picture">
-          <img
-            :src="indexdata.header_image"
-            alt
-          />
+          <img :src="indexdata.header_image" alt />
         </div>
         <h3>{{indexdata.title}}</h3>
         <span>{{indexdata.brand_intros[0].brief}}</span>
@@ -33,9 +30,9 @@
           <li>
             <span>{{indexdatas.rst.supports[0].icon_name}}</span>
           </li>
-          <li style="margin-left:.5rem" > {{indexdatas.rst.supports[0].description}}</li>
+          <li style="margin-left:.5rem">{{indexdatas.rst.supports[0].description}}</li>
         </ul>
-         <!-- v-if="indexdata.rst.supports[0].description!==''" -->
+        <!-- v-if="indexdata.rst.supports[0].description!==''" -->
       </div>
     </div>
     <div class="action">
@@ -107,24 +104,24 @@ export default {
   created() {
     this.getData();
   },
-  data(){
-    return{
-      indexdata:{},
-      indexdatas:{}
-    }
+  data() {
+    return {
+      indexdata: {},
+      indexdatas: {}
+    };
   },
   methods: {
     getData() {
-      this.$axios("/profile/seller").then(res => {
+      this.$axios("/api/profile/seller").then(res => {
         // console.log(res.data);
-        this.indexdata=res.data
+        this.indexdata = res.data;
         // console.log(this.indexdata)
       });
-      this.$axios("/profile/batch_shop").then(rst =>{
+      this.$axios("/api/profile/batch_shop").then(rst => {
         // console.log(rst.data);
-        this.indexdatas=rst.data
-      })
-    },  
+        this.indexdatas = rst.data;
+      });
+    }
   }
 };
 </script>
@@ -161,8 +158,8 @@ export default {
   text-overflow: ellipsis;
   display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
   -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
-  -webkit-line-clamp:2; /** 显示的行数 **/
-  overflow: hidden;  /** 隐藏超出的内容 **/
+  -webkit-line-clamp: 2; /** 显示的行数 **/
+  overflow: hidden; /** 隐藏超出的内容 **/
 }
 .seller .brand p {
   text-align: center;
@@ -210,13 +207,13 @@ export default {
 .seller .serve .service ul {
   font-size: 0.8125rem;
   line-height: 1.3rem;
-  padding-top: .5rem;
+  padding-top: 0.5rem;
   padding-bottom: 2rem;
   display: flex;
   align-content: center;
   text-align: center;
 }
-.seller .serve .service ul li span{
+.seller .serve .service ul li span {
   border: 1px solid black;
   width: 1.2rem;
   height: 1.2rem;
@@ -252,7 +249,7 @@ export default {
   padding-top: 1.2rem;
   margin: 0 auto;
 }
-.seller .shops .info h3{
+.seller .shops .info h3 {
   font-weight: 700;
 }
 .seller .shops .info p {
@@ -268,14 +265,14 @@ export default {
   font-size: 0.8125rem;
   height: 3rem;
 }
-.seller .shops .info ul li .site{
+.seller .shops .info ul li .site {
   width: 70%;
   text-align: right;
 }
-.seller .shops .info ul li .site span{
+.seller .shops .info ul li .site span {
   width: 70%;
-  font-size: .74rem;
-} 
+  font-size: 0.74rem;
+}
 .fa-angle-right {
   color: #ccc;
   font-size: 1.4rem;
@@ -293,7 +290,7 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.seller .business .aptitude h3{
+.seller .business .aptitude h3 {
   font-weight: 700;
 }
 </style>

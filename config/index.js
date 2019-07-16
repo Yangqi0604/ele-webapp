@@ -7,17 +7,26 @@ const path = require('path')
 module.exports = {
   dev: {
 
-    // Paths
+    // open: true,
+    // https: false,
+    // hotOnly: false,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-
+      // '/api': {
+      //   target: 'https://ele-interface.herokuapp.com/api',
+      //   ws: true,
+      //   changOrigin: true,
+      //   pathRewrite: {
+      //     '^/api': ''
+      //   }
+      // }
     },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-

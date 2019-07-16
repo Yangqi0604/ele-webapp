@@ -134,12 +134,12 @@ export default {
         remarkInfo: this.remarkInfo
       };
       // console.log(orderlist);
-      this.$axios
-        .post(`/user/add_order/${localStorage.ele_login}`, orderlist)
-        .then(res => {
-          // console.log(res.data);
-          this.$router.push("/order");
-        });
+      // this.$axios
+      //   .post(`/api/user/add_order/${localStorage.ele_login}`, orderlist)
+      //   .then(res => {
+      //     // console.log(res.data);
+      //     this.$router.push("/order");
+      //   });
     }
   },
   components: {

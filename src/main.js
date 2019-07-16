@@ -13,7 +13,7 @@ import SIdentify from '@/components/ele-login/sidentify.vue'
 Vue.use(SIdentify)
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios;
-axios.defaults.baseURL = 'https://ele-interface.herokuapp.com/api/';
+axios.defaults.baseURL = 'https://ele-interface.herokuapp.com/';
 Vue.use(MintUI);
 
 // 请求拦截
