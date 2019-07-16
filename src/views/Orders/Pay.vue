@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { setCookie } from "../../assets/js/cookie";
 import Header from "../../components/public/Header";
 import { setInterval, clearInterval } from "timers";
 export default {
@@ -38,7 +39,8 @@ export default {
     return {
       countDown: "00:15:00",
       timer: null,
-      timeOut: false
+      timeOut: false,
+      shopInfo: ""
     };
   },
   beforeRouteEnter(to, from, next) {
@@ -127,12 +129,20 @@ export default {
       this.addOrder();
     },
     addOrder() {
-      let orderlist = {
+      let shopInfo = {
         orderInfo: this.orderInfo,
         userInfo: this.userInfo,
         totalPrice: this.totalPrice,
         remarkInfo: this.remarkInfo
       };
+
+      // let orderInfo = this.orderInfo;
+      // let userInfo = this.userInfo;
+      // let totalPrice = this.totalPrice;
+      // let remarkInfo = this.remarkInfo;
+      // let shopInfo = ["orderInfo", "userInfo", "totalPrice", "remarkInfo"];
+      localStorage.setItem("shopInfo", JSON.stringify([shopInfo]));
+      this.$router.push("/order");
       // console.log(orderlist);
       // this.$axios
       //   .post(`/api/user/add_order/${localStorage.ele_login}`, orderlist)

@@ -16,6 +16,18 @@ Vue.prototype.$axios = axios;
 axios.defaults.baseURL = 'https://ele-interface.herokuapp.com/';
 Vue.use(MintUI);
 
+import {
+  setCookie,
+  getCookie,
+  delCookie
+} from "./assets/js/cookie.js"
+
+Vue.prototype.$Cookie = {
+  setCookie,
+  getCookie,
+  delCookie
+}
+
 // 请求拦截
 axios.interceptors.request.use(
   config => {

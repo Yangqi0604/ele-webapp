@@ -39,17 +39,18 @@ export default {
       orderlist: []
     };
   },
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.getData();
-    });
+  created() {
+    this.getData();
   },
+  // beforeRouteEnter(to, from, next) {
+  //   next(vm => {
+  //     vm.getData();
+  //   });
+  // },
   methods: {
     getData() {
-      this.$axios(`/api/user/orders/${localStorage.ele_login}`).then(res => {
-        console.log(res.data);
-        this.orderlist = res.data.orderlist;
-      });
+      this.orderlist = JSON.parse(localStorage.getItem("shopInfo"));
+      console.log(this.orderlist);
     }
   }
 };
