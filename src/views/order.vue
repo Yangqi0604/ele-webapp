@@ -1,136 +1,158 @@
 <template>
-
   <div class="order">
-     <div class="order-processing">
-       <div class="processing-top">
-         <img src="https://fuss10.elemecdn.com/7/d3/48a777a6b444dc317cc24d101220cjpeg.jpeg?imageMogr/format/webp/thumbnail/!64x64r/gravity/Center/crop/64x64/">
-          <div class="time">
-            <div class="tiMe"> 
-            <div class="ele-tiMe">
-                <h3>肯德基宅急送(风八..</h3>
-                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+    <div class="order-card-body" v-for="(order,index) in orderlist" :key="index">
+      <div
+        class="order-card-wrap"
+        @click="$router.push({name:'orderInfo',params:order})"
+        v-if="order.orderInfo"
+      >
+        <img :src="order.orderInfo.shopInfo.image_path" alt />
+        <div class="order-card-content">
+          <div class="order-card-head">
+            <div class="title">
+              <a>
+                <span>{{order.orderInfo.shopInfo.name}}</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+              <p>订单已完成</p>
             </div>
-            <span>5小时52分钟前</span>
+            <p class="date-time">{{order.date}}</p>
           </div>
-          <p>订单超时未支付</p>
-          </div> 
-       </div>
-       <!-- 第二层 -->
-       <div class="price">
-          <div class="price-row">
-            <p>雪菜笋丁鸡肉粥T</p>
-            <span>￥16.50</span>
+          <div class="order-card-detail">
+            <p class="detail">{{order.orderInfo.selectFoods[0].name}}</p>
+            <p class="price">¥{{order.totalPrice}}</p>
           </div>
-       </div>
-       <!-- 第三层 -->
-       <div class="once-agin">
-          <a>再来一单</a>
-       </div>
-     </div> 
+        </div>
+      </div>
+      <div class="order-card-bottom">
+        <button class="cardbutton" @click="$router.push('/shop')">再来一单</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
-
-</script>
-
-<style lang="scss" scoped>
-.order {
-  width: 100%;
-  height: 12rem;
-  background-color: #f4f4f4;
-  .order-processing {
-    width: 100%;
-    height: 11.5rem;
-    background-color: white;
-    .processing-top {
-      width: 100%;
-      height: 3.4rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      .time {
-        width: 86%;
-        height: 4rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 0.05rem solid #f3f3f3;
-        .tiMe {
-          width: 60%;
-          height: 3.4rem;
-          .ele-tiMe {
-            width: 75%;
-            height: 2rem;
-            display: flex;
-            align-items: center;
-            color: #2e2e2e;
-            justify-content: space-around;
-            h3 {
-              font-size: 0.92rem;
-            }
-            i {
-              font-size: 0.62rem;
-              color: #3b3b3b;
-            }
-          }
-          span {
-            font-size: 0.62rem;
-            color: #aaaaaa;
-          }
-        }
-        p {
-          font-size: 0.80rem;
-          color: #323232;
-        }
-      }
-      img {
-        width: 2rem;
-        height: 2rem;
-      }
-    }
-    .price {
-      width: 100%;
-      height: 4rem;
-      border-bottom: 0.05rem solid #f3f3f3;
-      .price-row {
-        display: flex;
-        justify-content: space-between;
-        width: 76%;
-        height: 4rem;
-        align-items: center;
-        margin: 0 auto;
-        p {
-          font-size: 0.78rem;
-          color: #9f9f9f;
-        }
-        span {
-          font-size: 0.78rem;
-          color: #373737;
-        }
-      }
-    }
-    .once-agin {
-      width: 100%;
-      height: 4.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      a {
-        width: 18%;
-        height: 2rem;
-        display: block;
-        text-align: center;
-        line-height: 2rem;
-        margin-right: 1.2rem;
-        border-radius: 0.25rem;
-        font-size: 0.88rem;
-        color: #1f9aff;
-        border: 0.05rem solid #1f9aff;
-      }
+export default {
+  name: "order",
+  data() {
+    return {
+      orderlist: []
+    };
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.getData();
+    });
+  },
+  methods: {
+    getData() {
+      this.$axios(`/user/orders/${localStorage.ele_login}`).then(res => {
+        console.log(res.data);
+        this.orderlist = res.data.orderlist;
+      });
     }
   }
-}
+};
+</script>
 
+<style scoped>
+.order {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  margin-bottom: 2.666667vw;
+}
+.order-card-body {
+  margin-top: 2.666667vw;
+  background-color: #fff;
+  padding: 3.733333vw 0 0 4vw;
+}
+.order-card-wrap {
+  display: flex;
+}
+.order-card-wrap > img {
+  height: 8.533333vw;
+  border-radius: 0.533333vw;
+  border: 1px solid #eee;
+  width: 8.533333vw;
+  margin-right: 2.666667vw;
+}
+.order-card-content {
+  flex: 1;
+}
+.order-card-head {
+  border-bottom: 1px solid #eee;
+  padding-right: 3.466667vw;
+  padding-bottom: 2.666667vw;
+}
+.order-card-head .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.order-card-head .title > a {
+  font-size: 1rem;
+  line-height: 1.5em;
+  color: #333;
+  text-decoration: none;
+}
+.order-card-head .title > a > span {
+  display: inline-block;
+  max-width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.order-card-head .title > a > i {
+  margin-left: 1.333333vw;
+  color: #ccc;
+  vertical-align: super;
+}
+.order-card-head .title > p {
+  font-size: 0.8rem;
+  text-align: right;
+  color: #333;
+  max-width: 14em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.date-time {
+  font-size: 0.6rem;
+  color: #999;
+}
+.order-card-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 4vw 3.466667vw 4vw 0;
+  font-size: 0.8rem;
+}
+.order-card-detail .detail {
+  color: #666;
+  display: flex;
+  align-items: center;
+}
+.order-card-detail .price {
+  flex-basis: 16vw;
+  text-align: right;
+  color: #333;
+  font-weight: 700;
+}
+.order-card-bottom {
+  display: flex;
+  border-top: 1px solid #eee;
+  padding: 2.666667vw 4.266667vw;
+  justify-content: flex-end;
+}
+.cardbutton {
+  padding: 1.333333vw 2.666667vw;
+  border: 1px solid #2395ff;
+  border-radius: 0.533333vw;
+  background-color: transparent;
+  outline: none;
+  font-size: 0.8rem;
+  color: #2395ff;
+  margin-left: 2vw;
+}
 </style>

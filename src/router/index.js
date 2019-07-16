@@ -169,6 +169,11 @@ const router = new Router({
       path: '/quality',
       name: 'quality',
       component: () => import('../views/quality.vue')
+    },
+    {
+      path: '/orderInfo',
+      name: 'orderInfo',
+      component: () => import('../views/Orders/OrderInfo.vue')
     }
   ]
 })

@@ -3,7 +3,7 @@
   <div>
     <mt-swipe :auto="0" class="entries">
       <mt-swipe-item v-for="(entry,index) in entries" :key="index" class="item-overflow">
-        <div class="itemfood" v-for="(item,i) in entry" :key="i">
+        <div class="itemfood" v-for="(item,i) in entry" :key="i" @click="handleclick(i)">
           <div class="img_item">
             <img :src="item.image" alt />
           </div>
@@ -22,11 +22,11 @@ export default {
   data() {
     return {
       url: [
-        "/ele-food",
-        "",
-        "",
-        "",
-        "",
+        "ele-food",
+        "ele-breakfast",
+        "drugstore",
+        "engorgeOne",
+        "quality",
         "",
         "",
         "",
@@ -41,6 +41,11 @@ export default {
         ""
       ]
     };
+  },
+  methods: {
+    handleclick(i) {
+      this.$router.push(`/${this.url[i]}`);
+    }
   }
 };
 </script>
