@@ -2,14 +2,11 @@
   <div>
     <nav-item-header :itemList="itemList"></nav-item-header>
     <!-- 导航条 -->
-    <nav-item-bar-title
-      :filterdata="filterdata"
-      @searchFixed="showFilterview"
-      @updata="updata"
-      style="position: sticky; top: 3rem; z-index: 100; background-color: #fff"
-    />
+    <filterView :filterdata="filterdata" @searchFixed="showFilterview" @updata="updata"
+                style="position: fixed;width: 100%; top: 3rem; background-color: #fff; z-index:10"
+    ></filterView>
     <!-- 商铺列表 -->
-    <div class="shopList" style="margin-top: 3rem">
+    <div class="shopList" style="padding-top: 5rem">
       <mt-loadmore
         :top-method="loadData"
         :bottom-method="loadMore"
@@ -33,12 +30,14 @@ import { Loadmore } from "mint-ui";
 import NavItemHeader from "@/components/public/NavItemHeader.vue";
 import NavItemBarTitle from "@/components/public/NavItemBarTitle.vue";
 import Homeshoplist from "@/components/home/Homeshoplist.vue";
+import filterView from "../../components/home/filterView";
 export default {
   name: "ele-food",
   components: {
     "nav-item-header": NavItemHeader,
     "nav-item-bar-title": NavItemBarTitle,
-    "home-shop-list": Homeshoplist
+    "home-shop-list": Homeshoplist,
+    filterView
   },
   data() {
     return {

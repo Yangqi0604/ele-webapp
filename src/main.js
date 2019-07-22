@@ -9,12 +9,18 @@ import store from './store/store';
 import 'mint-ui/lib/style.css';
 import MintUI from 'mint-ui';
 import qs from 'qs';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import SIdentify from '@/components/ele-login/sidentify.vue'
 Vue.use(SIdentify)
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios;
 axios.defaults.baseURL = 'https://ele-interface.herokuapp.com/';
 Vue.use(MintUI);
+
+Vue.use(ElementUI);
+
+
 
 import {
   setCookie,

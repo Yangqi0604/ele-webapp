@@ -2,9 +2,11 @@
   <div>
     <nav-item-header :itemList="itemList"></nav-item-header>
     <!-- 导航条 -->
-    <filterView :filterdata="filterdata" @searchFixed="showFilterview" @updata="updata"></filterView>
+    <filterView :filterdata="filterdata" @searchFixed="showFilterview" @updata="updata"
+        style="position: fixed;width: 100%; top: 3rem; background-color: #fff; z-index:10"
+    ></filterView>
     <!-- 商铺列表 -->
-    <div class="shopList" style="padding-top: 3rem">
+    <div class="shopList" style="padding-top: 5rem">
       <mt-loadmore
         :top-method="loadData"
         :bottom-method="loadMore"

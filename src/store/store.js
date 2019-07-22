@@ -67,6 +67,7 @@ const mutations = {
   },
   changeclick: state => {
     state.flag = !state.flag;
+    console.log(state.flag)
   },
   [types.ORDER_INFO](state, orderInfo) {
     if (orderInfo) {

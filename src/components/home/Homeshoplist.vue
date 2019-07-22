@@ -1,6 +1,7 @@
 <template>
   <div>
-    <section class="index-container">
+    <!-- 饿了么的dom结构 -->
+    <section class="index-container" v-if="flag">
       <div class="index-shopInfo">
         <!-- 左侧图片 -->
         <div class="logo_container">
@@ -56,13 +57,53 @@
         </div>
       </div>
     </section>
+    <!-- 美团的dom结构 -->
+    <section class="index-containerMei" v-else>
+      <div class="index-shopInfo">
+        <!-- 左侧图片 -->
+        <div class="logo_container">
+          <img :src="restaurant.image_path" alt />
+        </div>
+        <!-- 右侧内容 -->
+        <!-- 第一行，商店名称 -->
+        <div class="index_main" @click="$router.push('/shop')">
+          <div class="index_shopname">
+            <span>{{restaurant.name}}</span>
+          </div>
+          <!-- 第二行，活动描述 -->
+          <div class="index-moneylimit">
+            <div>
+              <span>￥{{restaurant.activities[2].description}}</span>
+            </div>
+          </div>
+          <!-- 第四行，口碑 -->
+          <div class="index-status">
+            <div>
+              <span>{{restaurant.float_minimum_order_amount}}元</span>
+              <span>门市价:{{restaurant.order_lead_time}}</span>
+            </div>
+            <div>
+              <span>已售{{restaurant.recent_order_num}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>    
   </div>
 </template>
 
 <script>
+import {mapActions,mapGetters,mapMutations,mapState} from "vuex"
 import starLevel from "../public/starLevel";
 export default {
   name: "Homeshoplist",
+  data(){
+    return{
+    }
+  },
+  computed:{
+...mapState(['flag'])
+  },
   props: {
     restaurant: {}
   },
@@ -173,5 +214,46 @@ export default {
 .mint-loadmore {
   height: calc(100% - 95px);
   overflow: auto;
+}
+.index-containerMei{
+    /* border-top: 1px solid #DDD8CE;
+    border-bottom: 1px solid #DDD8CE; */
+    margin-top: .2rem;
+    margin-bottom: 0;
+    background-color: #fff;
+    min-height: 5rem;
+    position: relative;
+    padding: .28rem .2rem;
+}
+.index-containerMei .index_shopname>span{
+    padding-top: .1rem;
+    margin-bottom: .12rem;
+    font-size: .9rem;
+    font-weight: 400;
+    color: #333;
+}
+.index-containerMei .index-moneylimit>div>span{
+    font-size: .24rem;
+    height: 1.4875rem;
+    line-height:1.4875rem;
+    margin-bottom: .16rem;
+    color: #666;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.index-containerMei .index-status{
+  color: #666;
+  font-size:.5rem;
+}
+.index-containerMei .index-status>div:nth-of-type(1)>span:nth-of-type(1){
+    font-size: .99rem;
+    color: #06c1ae;
+}
+.index-containerMei .index-status>div:nth-of-type(1)>span:nth-of-type(2){
+    font-size:.5rem;
+    color:#666;
 }
 </style>

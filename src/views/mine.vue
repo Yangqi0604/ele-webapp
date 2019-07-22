@@ -1,9 +1,11 @@
 <template>
   <div>
-    <div>
-      <div class="me">
+    <div class="qwer">
+      <div class="me" v-if="flag">
         <div class="headInfo">
-          <div class="head-img" @click="$router.push('/logOut')"></div>
+          <div class="loginYu" @click="$router.push('/logOut')">
+            <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+          </div>
           <div class="head-profile">
             <p class="user-id" v-if="userInfo">{{userInfo._id}}</p>
             <p v-else class="user-id" @click="handlelogin">登录/注册</p>
@@ -16,11 +18,12 @@
           <i class="fa fa-angle-right"></i>
         </div>
       </div>
-      <elm-header></elm-header>
+      <div v-else>
+        <mt-nav></mt-nav>
+      </div>
+      <elm-header v-if="flag"></elm-header>
+      <mtmain v-else></mtmain>
       <elm-main></elm-main>
-    </div>
-    <div v-if="false">
-      <mt-nav></mt-nav>
     </div>
   </div>
 </template>
@@ -31,20 +34,31 @@ import elmHeader from "../components/mine-lem/elmHeader";
 import elmMain from "../components/mine-lem/elmMain";
 //mt
 import mtNav from "../components/mine-mt/mtNav";
+import mtmain from "../components/mine-mt/mtmain";
+import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
 export default {
   name: "mine",
   components: {
     elmHeader,
     elmMain,
-    mtNav
+    mtNav,
+    mtmain
+  },
+  computed: {
+    ...mapState(["flag"])
   },
   data() {
     return {
-      userInfo: ""
+      userInfo: "",
+      imageUrl: ""
     };
   },
   beforeRouteEnter(to, from, next) {
     next(vm => vm.getData());
+  },
+  created() {
+    //从localStorage中取出照片
+    this.imageUrl = localStorage.getItem("img");
   },
   methods: {
     handlelogin() {
@@ -67,6 +81,9 @@ export default {
 </script>
 
 <style scoped>
+.qwer {
+  background-color: #ffc501;
+}
 .me {
   width: 100%;
   height: 100%;
@@ -80,7 +97,15 @@ export default {
   color: #fff;
   align-items: center;
 }
-.head-img {
+.loginYu {
+  margin-right: 6px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-size: 100%;
+  background-color: #f3f6fc;
+}
+.avatar {
   width: 60px;
   height: 60px;
   border-radius: 50%;

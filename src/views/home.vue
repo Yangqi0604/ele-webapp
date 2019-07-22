@@ -1,17 +1,37 @@
 <template>
   <div class="home">
     <!-- v-if="flag" :class="flag ? 'header' :'headerA'" -->
-    <div class="header">
-      <div class="address_map" @click="$router.push({name: 'address',params: {city: city}})">
-        <i class="fa fa-map-marker"></i>
-        <span>{{address}}</span>
-        <i class="fa fa-sort-desc"></i>
+    <!--    饿了吗头部-->
+    <div v-if="flag">
+      <div class="header">
+        <div class="address_map" @click="$router.push({name: 'address',params: {city: city}})">
+          <i class="fa fa-map-marker"></i>
+          <span>{{address}}</span>
+          <i class="fa fa-sort-desc"></i>
+        </div>
+      </div>
+      <div class="search_wrap" :class="{'fixedview' :showFilter}">
+        <div class="shop_search" @click="$router.push('/search')">
+          <i class="fa fa-search"></i>
+          搜索饿了么商家 商家名称
+        </div>
       </div>
     </div>
-    <div class="search_wrap" :class="{'fixedview' :showFilter}">
-      <div class="shop_search" @click="$router.push('/search')">
-        <i class="fa fa-search"></i>
-        搜索饿了么商家 商家名称
+    <!--    美团头部-->
+    <div v-else>
+      <div class="mt-header">
+        <div class="mt-header-left">
+          <span>西安</span>
+          <i class="fa fa-chevron-down"></i>
+        </div>
+        <div class="mt-header-search">
+          <i class="fa fa-search"></i>
+          <span>输入商家/品类/商圈</span>
+        </div>
+        <div class="mt-header-right">
+          <i class="fa fa-user-o"></i>
+          <span>我的</span>
+        </div>
       </div>
     </div>
     <!-- 分类按钮 -->
@@ -19,11 +39,11 @@
       <ItemIcon :entries="entries" />
     </div>
     <!-- 轮播图 -->
-    <div id="container">
+    <div id="container" v-if="flag">
       <Swiper :swipeImgs="swipeImgs" />
     </div>
     <!-- 推荐商家 -->
-    <div class="shoplist-title">推荐商家</div>
+    <div class="shoplist-title" v-if="flag">推荐商家</div>
     <!-- 导航 -->
     <filterView :filterdata="filterdata" @searchFixed="showFilterview" @updata="updata"></filterView>
     <!-- 商家信息 -->
@@ -44,6 +64,7 @@
 
 <script>
 import { Swipe, SwipeItem, Loadmore } from "mint-ui";
+import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
 import Swiper from "../components/public/Swiper";
 import ItemIcon from "../components/home/Itemicon";
 import filterView from "../components/home/filterView";
@@ -57,6 +78,7 @@ export default {
     ItemIcon
   },
   computed: {
+    ...mapState(["flag"]),
     address() {
       //在vuex中获取管理地址的最新状态
       return this.$store.getters.address;
@@ -79,8 +101,8 @@ export default {
       restaurants: [], //存放所有商家
       allLoaded: false,
       bottomPullText: "上拉加载更多",
-      data: null,
-      flag: false
+      data: null
+      // flag: true
     };
   },
   created() {
@@ -265,5 +287,52 @@ export default {
 .mint-loadmore {
   height: calc(100% - 95px);
   overflow: auto;
+}
+/*美团头部*/
+.mt-header {
+  height: 3.01rem;
+  color: #fff;
+  background: #06c1ae;
+  border-bottom: 1px solid #21897d;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+}
+.mt-header .mt-header-left {
+  margin: 0 0.8rem;
+  font-size: 1rem;
+}
+.mt-header .mt-header-left i {
+  margin-left: 0.1rem;
+}
+.mt-header .mt-header-right {
+  margin: 0 0.8rem;
+  font-size: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mt-header .mt-header-right i {
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.mt-header .mt-header-search {
+  flex: 1;
+  border-radius: 0.2rem;
+  background: rgba(0, 0, 0, 0.15);
+  height: 2rem;
+  line-height: 2rem;
+  position: relative;
+  margin-top: 0.1rem;
+}
+.mt-header .mt-header-search i {
+  margin-left: 0.6rem;
+}
+.mt-header .mt-header-search span {
+  font-size: 0.8rem;
+  color: #68dbce;
+  margin-left: 0.3rem;
 }
 </style>

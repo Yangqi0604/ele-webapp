@@ -2,7 +2,7 @@
   <div class="auth" v-if="shuju.codebox">
     <div class="title">请填写图形验证码</div>
     <div class="entrycode">
-      <input type="text" v-model="picauthcode" @input="isCode" />
+      <input type="text" v-model="picauthcode" @input="isCode" maxlength="4"/>
       <s-identify class="canv" :identifyCode="identifyCode"></s-identify>
       <p @click="refreshCode">看不清？换一张</p>
     </div>
@@ -39,10 +39,14 @@ export default {
       this.shuju.codebox = !this.shuju.codebox;
       this.identifyCode = "";
       this.makeCode(this.identifyCodes, 4);
+      this.picauthcode=""
     },
     isCode() {
       if (this.picauthcode == this.identifyCode) {
         this.color = "color:#0089dc";
+      }else if(this.picauthcode!=this.identifyCode){
+        this.disabled=false
+        this.color=""
       }
     },
     codeIsTrue() {

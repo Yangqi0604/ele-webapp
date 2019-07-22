@@ -140,15 +140,72 @@ const router = new Router({
       name: 'customerService',
       component: () => import('../views/mine/customerService.vue')
     },
+    ,
     {
       path: '/ele-breakfast',
       name: 'ele-breakfast',
       component: () => import('../views/superMarket/ele-breakfast.vue')
     },
     {
+      path: '/ele-fruit',
+      name: 'ele-fruit',
+      component: () => import('../views/superMarket/ele-fruit.vue')
+    },
+    {
+      path: '/ele-drink',
+      name: 'ele-drink',
+      component: () => import('../views/superMarket/ele-drink.vue')
+    },
+    {
+      path: '/ele-Cvs',
+      name: 'ele-Cvs',
+      component: () => import('../views/superMarket/ele-Cvs.vue')
+    },
+    {
+      path: '/ele-snack',
+      name: 'ele-snack',
+      component: () => import('../views/superMarket/ele-snack.vue')
+    },
+    {
+      path: '/ele-kitchen',
+      name: 'ele-kitchen',
+      component: () => import('../views/superMarket/ele-kitchen.vue')
+    },
+    {
       path: '/ele-food',
       name: 'ele-food',
       component: () => import('../views/superMarket/ele-food.vue')
+    },
+    {
+      path: '/ele-buy',
+      name: 'ele-buy',
+      component: () => import('../views/superMarket/ele-buy.vue'),
+      children: [
+        {
+          path: 'eleBuyHomepage',
+          name: 'eleBuyHomepage',
+          component: () => import('../components/ele-buy/ele-buy-homepage.vue'),
+        },
+        {
+          path: 'eleBuyGetpack',
+          name: 'eleBuyGetpack',
+          component: () => import('../components/ele-buy/ele-buy-getpack.vue'),
+        },
+        {
+          path: 'eleBuyDingdan',
+          name: 'eleBuyDingdan',
+          component: () => import('../components/ele-buy/ele-buy-dingdan.vue'),
+        },
+        {
+          path: 'eleBuyMine',
+          name: 'eleBuyMine',
+          component: () => import('../components/ele-buy/ele-buy-mine.vue'),
+        },
+        {
+          path: "/ele-buy",
+          redirect: "/ele-buy/eleBuyHomepage"
+        }
+      ]
     },
     {
       path: '/goldshop',
@@ -174,7 +231,12 @@ const router = new Router({
       path: '/orderInfo',
       name: 'orderInfo',
       component: () => import('../views/Orders/OrderInfo.vue')
-    }
+    },
+    {
+      path: '/myMessage',
+      name: 'myMessage',
+      component: () => import('../views/myMessage.vue')
+    },
   ]
 })
 

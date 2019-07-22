@@ -4,77 +4,23 @@
             <h1>兑换商品</h1>
             <span>好物随心换</span>
         </div>
-<!--    列表    -->
+        <!--    列表    -->
         <div class="center">
-            <div class="centers">
+            <div class="centers"
+                 v-for="(item,index) in list"
+                 :key="index">
                 <div class="centerone">
-                    <span>3元品质联盟红包</span>
+                    <span>{{item.a1}}</span>
                     <div class="centertwos">
-                        <h5>90</h5>
-                        <p>金币</p>
-                        <span>限时优惠</span>
+                        <h5>{{item.a2}}</h5>
+                        <p>{{item.a3}}</p>
+                        <span>{{item.a4}}</span>
                     </div>
                 </div>
-                <img src="https://fuss10.elemecdn.com/7/ad/f0132ee0fee6c57253ada4573364ejpeg.jpeg?imageMogr/format/webp/thumbnail/!315x195r/gravity/Center/crop/315x195/" alt="">
-            </div>
-<!--    循环        -->
-            <div class="centers">
-                <div class="centerone">
-                    <span>3元品质联盟红包</span>
-                    <div class="centertwos">
-                        <h5>90</h5>
-                        <p>金币</p>
-                        <span>限时优惠</span>
-                    </div>
-                </div>
-                <img src="https://fuss10.elemecdn.com/7/ad/f0132ee0fee6c57253ada4573364ejpeg.jpeg?imageMogr/format/webp/thumbnail/!315x195r/gravity/Center/crop/315x195/" alt="">
-            </div>
-            <div class="centers">
-                <div class="centerone">
-                    <span>3元品质联盟红包</span>
-                    <div class="centertwos">
-                        <h5>90</h5>
-                        <p>金币</p>
-                        <span>限时优惠</span>
-                    </div>
-                </div>
-                <img src="https://fuss10.elemecdn.com/7/ad/f0132ee0fee6c57253ada4573364ejpeg.jpeg?imageMogr/format/webp/thumbnail/!315x195r/gravity/Center/crop/315x195/" alt="">
-            </div>
-            <div class="centers">
-                <div class="centerone">
-                    <span>3元品质联盟红包</span>
-                    <div class="centertwos">
-                        <h5>90</h5>
-                        <p>金币</p>
-                        <span>限时优惠</span>
-                    </div>
-                </div>
-                <img src="https://fuss10.elemecdn.com/7/ad/f0132ee0fee6c57253ada4573364ejpeg.jpeg?imageMogr/format/webp/thumbnail/!315x195r/gravity/Center/crop/315x195/" alt="">
-            </div>
-            <div class="centers">
-                <div class="centerone">
-                    <span>3元品质联盟红包</span>
-                    <div class="centertwos">
-                        <h5>90</h5>
-                        <p>金币</p>
-                        <span>限时优惠</span>
-                    </div>
-                </div>
-                <img src="https://fuss10.elemecdn.com/7/ad/f0132ee0fee6c57253ada4573364ejpeg.jpeg?imageMogr/format/webp/thumbnail/!315x195r/gravity/Center/crop/315x195/" alt="">
-            </div>
-            <div class="centers">
-                <div class="centerone">
-                    <span>3元品质联盟红包</span>
-                    <div class="centertwos">
-                        <h5>90</h5>
-                        <p>金币</p>
-                        <span>限时优惠</span>
-                    </div>
-                </div>
-                <img src="https://fuss10.elemecdn.com/7/ad/f0132ee0fee6c57253ada4573364ejpeg.jpeg?imageMogr/format/webp/thumbnail/!315x195r/gravity/Center/crop/315x195/" alt="">
+                <img :src="item.pic" alt="">
             </div>
         </div>
-<!--    查看更多    -->
+        <!--    查看更多    -->
         <div class="goldFooter">
             <span>查看更多</span>
             <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -84,7 +30,55 @@
 
 <script>
     export default {
-        name: "goldHeader"
+        name: "goldHeader",
+        data() {
+            return {
+                "list": [
+                    {
+                        "a1": "3元品质联盟红包",
+                        "a2": "90",
+                        "a3": "金币",
+                        "a4": "限时优惠",
+                        "pic": "https://fuss10.elemecdn.com/7/ec/adf8ae0fd52a0eb56f4332fb61ac2jpeg.jpeg?imageMogr/format/webp/thumbnail/!315x195r/gravity/Center/crop/315x195/"
+                    },
+                    {
+                        "a1": "数码经络按仪",
+                        "a2": "9",
+                        "a3": "金币",
+                        "a4": "特价换购",
+                        "pic": "https://fuss10.elemecdn.com/e/b5/605a11eae79849240113271dd1b94jpeg.jpeg?imageMogr/format/webp/thumbnail/!315x195r/gravity/Center/crop/315x195/"
+                    },
+                    {
+                        "a1": "扫地机器人",
+                        "a2": "9",
+                        "a3": "金币",
+                        "a4": "特价换购",
+                        "pic": "https://fuss10.elemecdn.com/5/78/5c1ca7ceca079926933ca418c9eb7jpeg.jpeg?imageMogr/format/webp/thumbnail/!315x195r/gravity/Center/crop/315x195/"
+                    },
+                    {
+                        "a1": "悬浮机械手感套装",
+                        "a2": "9",
+                        "a3": "金币",
+                        "a4": "特价换购",
+                        "pic": "https://fuss10.elemecdn.com/7/ad/f0132ee0fee6c57253ada4573364ejpeg.jpeg?imageMogr/format/webp/thumbnail/!315x195r/gravity/Center/crop/315x195/"
+                    },
+                    {
+                        "a1": "4D电动剃须刀",
+                        "a2": "9",
+                        "a3": "金币",
+                        "a4": "特价换购",
+                        "pic": "https://fuss10.elemecdn.com/e/4d/510b09923a4be3d666cd4ee2e1dd7jpeg.jpeg?imageMogr/format/webp/thumbnail/!315x195r/gravity/Center/crop/315x195/"
+                    },
+                    {
+                        "a1": "12寸手机屏幕高清放大器",
+                        "a2": "9",
+                        "a3": "金币",
+                        "a4": "特价换购",
+                        "pic": "https://fuss10.elemecdn.com/6/20/fdce2e5bdc6243bc89668f99e33a8jpeg.jpeg?imageMogr/format/webp/thumbnail/!315x195r/gravity/Center/crop/315x195/"
+                    }
+                ]
+            }
+        }
     }
 </script>
 

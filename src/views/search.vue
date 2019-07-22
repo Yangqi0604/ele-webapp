@@ -4,7 +4,7 @@
     <div class="search_header">
       <div class="search_wrap">
         <i class="fa fa-search"></i>
-        <input type="text" v-model="key_word" placeholder="请输入商家，商品信息" />
+        <input type="text" v-model.trim="key_word" placeholder="请输入商家，商品信息" />
         <button @click="searchHandle">搜索</button>
       </div>
     </div>
@@ -42,12 +42,13 @@ export default {
   },
   watch: {
     key_word() {
+      // console.log(key_word);
       this.keyWordChange();
     }
   },
   methods: {
     keyWordChange() {
-      //   console.log(this.key_word);
+      console.log(this.key_word);
       this.$axios(`/api/profile/typeahead/${this.key_word}`)
         .then(res => {
           // console.log(res.data);

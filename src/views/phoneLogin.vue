@@ -61,7 +61,8 @@ export default {
         changecode: "获取验证码",
         authcode: "",
         codebox: false,
-        errors: ""
+        errors: "",
+        tishi:false
       }
     };
   },
@@ -95,7 +96,9 @@ export default {
         })
         // 失败的话
         .catch(err => {
-          this.errors = "验证码错误";
+          this.shuju.tishi=true
+          this.shuju.errors = "验证码错误"
+          setTimeout(() => this.shuju.tishi=!this.shuju.tishi,3000)
         });
     }
   }
@@ -210,7 +213,7 @@ input {
 .tishi {
   position: absolute;
   bottom: 30%;
-  left: 35%;
+  left: 38%;
   color: #fff;
   padding: 10px 10px;
   border-radius: 5px;

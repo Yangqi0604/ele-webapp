@@ -54,7 +54,7 @@ export default {
 <style scoped>
 .main {
   width: 100%;
-  background-color: #ccc;
+  background-color: #fff;
 }
 .main .kong {
   height: 0.5rem;

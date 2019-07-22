@@ -4,7 +4,7 @@
       <div class="site" @click="$router.push('/myAddress')">
         <div class="elmSite">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <span>我的地址</span>
+          <span>{{d1}}</span>
         </div>
         <div class="siteRight">
           <span>></span>
@@ -16,7 +16,7 @@
       <div class="site" @click="$router.push('/goldShop')">
         <div class="elmSite">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <span>金币商城</span>
+          <span>{{d2}}</span>
         </div>
         <div class="siteRight">
           <span>></span>
@@ -25,7 +25,7 @@
       <div class="site">
         <div class="elmSite">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <span>3</span>
+          <span>{{d3}}</span>
         </div>
         <div class="siteRight">
           <span>></span>
@@ -37,7 +37,7 @@
       <div class="site" @click="$router.push('/customerService')">
         <div class="elmSite">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <span>我的客服</span>
+          <span>{{d4}}</span>
         </div>
         <div class="siteRight">
           <span>></span>
@@ -46,7 +46,7 @@
       <div class="site">
         <div class="elmSite">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <span>我的地址</span>
+          <span>{{d5}}</span>
         </div>
         <div class="siteRight">
           <span>></span>
@@ -55,7 +55,16 @@
       <div class="site">
         <div class="elmSite">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <span>我的地址</span>
+          <span>{{d6}}</span>
+        </div>
+        <div class="siteRight">
+          <span>></span>
+        </div>
+      </div>
+      <div class="site" @click="changeclick">
+        <div class="elmSite">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <span>{{d7}}</span>
         </div>
         <div class="siteRight">
           <span>></span>
@@ -69,8 +78,23 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
-  name: "elmMain"
+  name: "elmMain",
+  data() {
+    return {
+      d1: "我的地址",
+      d2: "金币商城",
+      d3: "分享拿20元现金",
+      d4: "我的客服",
+      d5: "下载饿了么APP",
+      d6: "规则中心",
+      d7: "切换皮肤"
+    };
+  },
+  methods: {
+    ...mapMutations(["changeclick"])
+  }
 };
 </script>
 
