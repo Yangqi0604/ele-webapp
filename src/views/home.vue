@@ -230,6 +230,21 @@ export default {
   width: 100%;
   height: 100px;
 }
+.setmeal{
+  width: 100%;
+  height: 7rem;
+  margin-top: .6rem;
+  background-color: #fff;
+}
+.setmeal .setmeal-pz{
+  width: 96%;
+  height: 100%;
+  margin: 0 auto;
+}
+.setmeal .setmeal-pz img{
+  width: 100%;
+  height: 100%;
+}
 .entries {
   background: #fff;
   height: 47.2vw;
