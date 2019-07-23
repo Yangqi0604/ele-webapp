@@ -237,6 +237,11 @@ const router = new Router({
       name: 'myMessage',
       component: () => import('../views/myMessage.vue')
     },
+    {
+      path: '/setmeal',
+      name: 'setmeal',
+      component: () => import('../components/setmeal/index-setmeal')
+    },
   ]
 })
 

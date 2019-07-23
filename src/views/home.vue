@@ -42,6 +42,12 @@
     <div id="container" v-if="flag">
       <Swiper :swipeImgs="swipeImgs" />
     </div>
+    <!-- 品质联盟 -->
+    <div  v-if="flag" class="setmeal" @click="$router.push('/setmeal')">
+      <div class="setmeal-pz">
+        <img src="../assets/pz.png" alt="">
+      </div>
+    </div>
     <!-- 推荐商家 -->
     <div class="shoplist-title" v-if="flag">推荐商家</div>
     <!-- 导航 -->
